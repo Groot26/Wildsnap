@@ -14,7 +14,7 @@ class App extends StatelessWidget {
       navigatorKey: GlobalKeys.navigationKey,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      initialRoute: Routes.SPLASH,
+      initialRoute: Routes.HOME,
       getPages: AppPages.pages,
       defaultTransition: Transition.fade,
       initialBinding: AppBinding(),
