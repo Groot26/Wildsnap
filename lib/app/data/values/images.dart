@@ -3,7 +3,8 @@ class Images {
 
   //static const icAppLogo = 'assets/images/ic_app_logo.png';
   //static const imgOnboarding1 = 'assets/images/img_onboarding.svg';
-  static const sample = '/assets/images/sample.jpg';
+  //static const sample = 'assets/images/sample.jpg';
+  static const imgSamplePost = 'assets/images/img_sample_post.png';
 
   //home
   static const icCamera = 'assets/images/ic_camera.svg';
@@ -18,6 +19,7 @@ class Images {
   static const imOnBoarding2 = 'assets/images/im_image2.png';
   static const imOnBoarding3 = 'assets/images/im_image3.png';
   static const imLogin = 'assets/images/im_login.png';
+
   static const icLeftArrow = 'assets/images/ic_left_arrow.svg';
   static const icPassword = 'assets/images/im_password.svg';
   static const icCheckBoxEnable = 'assets/images/ic_checkbox_enable.svg';
@@ -27,6 +29,7 @@ class Images {
   static const icProfile = 'assets/images/ic_profile.svg';
   static const icNotification = 'assets/images/ic_notification.svg';
   static const imgSample = 'assets/images/img_dummy_image.png';
+
   static const icJobHistory = 'assets/images/ic_job_history.svg';
   static const icCredits = 'assets/images/ic_credits.svg';
   static const icGstBank = 'assets/images/ic_gst_bank.svg';
