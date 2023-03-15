@@ -15,6 +15,6 @@ class SplashController extends GetxController {
     if (Storage.isUserExists())
       Get.offAllNamed(Routes.HOME);
     else
-      Get.offAllNamed(Routes.AUTH_LOGIN);
+      Get.offAllNamed(Routes.ON_BOARDING);
   }
 }

@@ -7,6 +7,8 @@ import 'package:starter/app/modules/auth/verify-otp/bindings/auth_verify_otp_bin
 import 'package:starter/app/modules/auth/verify-otp/views/auth_verify_otp_view.dart';
 import 'package:starter/app/modules/home/bindings/home_binding.dart';
 import 'package:starter/app/modules/home/views/home_view.dart';
+import 'package:starter/app/modules/onboarding/bindings/onboarding_binding.dart';
+import 'package:starter/app/modules/onboarding/views/onboarding_view.dart';
 import 'package:starter/app/modules/splash/bindings/splash_binding.dart';
 import 'package:starter/app/modules/splash/views/splash_view.dart';
 
@@ -33,6 +35,11 @@ class AppPages {
       name: Routes.AUTH_SIGNUP,
       page: () => AuthSignupView(),
       binding: AuthSignupBinding(),
+    ),
+    GetPage(
+      name: Routes.ON_BOARDING,
+      page: () => OnboardingView(),
+      binding: OnboardingBinding(),
     ),
     GetPage(
       name: Routes.HOME,

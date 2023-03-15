@@ -11,7 +11,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+
   cupertino_icons: ^1.0.4
+
+  flutter_svg: ^2.0.3
+
+  smooth_page_indicator: ^1.0.1
 
   # GetX
   get: ^4.6.1

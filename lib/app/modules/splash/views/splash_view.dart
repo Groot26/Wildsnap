@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:starter/app/data/values/images.dart';
+import 'package:starter/app/data/values/strings.dart';
 
 import '../controllers/splash_controller.dart';
 
@@ -7,15 +10,10 @@ class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('SplashView'),
-        centerTitle: true,
-      ),
+
       body: Center(
-        child: Text(
-          'SplashView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+        child:
+        Text(Strings.appName),
       ),
     );
   }
