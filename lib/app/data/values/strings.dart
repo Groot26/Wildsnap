@@ -10,12 +10,12 @@ class Strings {
   static const next = 'Next';
   static const start = 'Start';
   static const skip = 'Skip';
-  static const onboardingTitle1 = 'Order Your Services';
-  static const onboardingTitle2 = 'Service with full safety';
-  static const onboardingTitle3 = 'Quick Services';
-  static const onboardingDescription1 = 'Now you can order any service right from your mobile';
-  static const onboardingDescription2 = 'We maintain safety and and follow the proper rule to do service with cleanliness';
-  static const onboardingDescription3 = 'We allow our users to provide the quick service with proper maintenance';
+  static const onboardingTitle1 = 'Welcome to WildSnap!';
+  static const onboardingTitle2 = 'Create Your Photo Gallery';
+  static const onboardingTitle3 = 'Ready to start?';
+  static const onboardingDescription1 = 'The social media app for wildlife photographers.';
+  static const onboardingDescription2 = 'Show off your best wildlife shots.';
+  static const onboardingDescription3 = 'Let\'s capture the wild side of nature!';
 
   //auth_login
   static const loginAccount = 'Login Account';

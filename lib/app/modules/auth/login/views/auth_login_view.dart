@@ -50,7 +50,7 @@ class AuthLoginView extends GetView<AuthLoginController> {
                 ),
                 SizedBox(height: 4.0),
                 CustomTextField(
-                  wrapper: controller.mobileWrapper,
+                  wrapper: controller.passWrapper,
                   hintText: Strings.password,
                   inputType: TextInputType.visiblePassword,
                 ),

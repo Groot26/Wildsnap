@@ -7,7 +7,7 @@ class Story extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: AppColors.pink,
+          color: AppColors.blue,
           border: Border.all(color: AppColors.primaryColor, width: 2)),
       child: GestureDetector(
         onTap: () {},

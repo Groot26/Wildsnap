@@ -11,10 +11,19 @@ import 'package:starter/utils/loading/loading_utils.dart';
 
 class AuthLoginController extends BaseController<UserRepository> {
   final mobileWrapper = TextFieldWrapper();
+  final passWrapper = TextFieldWrapper();
 
   sendOTP() async {
     String mobile = mobileWrapper.controller.text.trim();
     if (mobile.isValidPhone()) {
+      mobileWrapper.errorText = Strings.empty;
+    } else {
+      mobileWrapper.errorText = ErrorMessages.invalidPhone;
+      return;
+    }
+
+    String password = passWrapper.controller.text;
+    if (password.isEmpty) {
       mobileWrapper.errorText = Strings.empty;
     } else {
       mobileWrapper.errorText = ErrorMessages.invalidPhone;

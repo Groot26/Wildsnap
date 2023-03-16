@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:starter/app/data/values/images.dart';
 import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_colors.dart';
@@ -20,7 +21,8 @@ class HomeView extends GetView<HomeController> {
         onPressed: () {},
         backgroundColor: AppColors.white,
         foregroundColor: AppColors.primaryColor,
-        child: Icon(Icons.add_circle_outline,size: 40),
+
+        child: Icon(Icons.add,size: 40),
 
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -62,11 +64,9 @@ class HomeView extends GetView<HomeController> {
                 child: Column(
                   children: [
                     CustomPost(
-                        title: 'hi', description: 'description', likes: 1),
+                        userName: 'Sai._.morajkar', description: 'description ', likes: true,),
                     CustomPost(
-                        title: 'hi', description: 'description', likes: 1),
-                    CustomPost(
-                        title: 'hi', description: 'description', likes: 1),
+                        userName: 'newUser', description: 'description', likes: false,),
                   ],
                 ),
               ),
