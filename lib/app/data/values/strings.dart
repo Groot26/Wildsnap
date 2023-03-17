@@ -23,7 +23,21 @@ class Strings {
   static const mobileNumber = 'Mobile Number';
   static const password = 'Password';
   static const login = 'Login';
+  static const signup = 'Don\'t have account? \n click to create new';
 
+  //BasicDetails
+  static const almostThere = 'Almost there !';
+  static const about = 'Tell some things about yourself';
+  static const name = 'Name';
+  static const userName = 'UserName';
+  static const number = 'Mobile Number';
+  static const email = 'Email';
+  static const city = 'City';
+  static const termsAndConditions = 'I agree to the Term and condition';
+  static const referrerNumber = 'Referrer Number';
+  static const address = 'Address';
+  static String pinCode = 'Pincode';
+  static const proceed = 'Proceed';
 }
 
 class ErrorMessages {
@@ -36,5 +50,15 @@ class ErrorMessages {
   static const invalidPhone = 'Invalid Mobile number';
   static const invalidOTP = 'Invalid OTP';
   static const invalidName = 'Invalid Name';
+  static const invalidUserName = 'Invalid UserName';
   static const invalidEmail = 'Invalid Email';
+
+  static const invalidPinCode = 'Invalid Pincode';
+  static const invalidAddress = 'Invalid Address';
+  static const invalidCity = 'Invalid City';
+  static const emptySelectedCategories =
+      'Please select atleast one category to continue.';
+
+
+
 }

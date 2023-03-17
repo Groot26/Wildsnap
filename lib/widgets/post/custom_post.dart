@@ -78,6 +78,13 @@ class CustomPost extends StatelessWidget {
                     IconButton(
                       onPressed: () {},
                       icon: Icon(
+                        Icons.location_on_rounded,
+                        size: 28,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
                         Icons.favorite_border,
                         size: 28,
                       ),

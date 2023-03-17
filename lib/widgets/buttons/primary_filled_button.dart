@@ -11,6 +11,7 @@ class PrimaryFilledButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      minWidth: double.infinity,
       onPressed: onTap,
       color: AppColors.primaryColor,
       child: Padding(

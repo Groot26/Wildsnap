@@ -27,6 +27,7 @@ dependencies:
 
   # UI
   shimmer: ^2.0.0
+  get_cli: ^0.2.30
 
 dev_dependencies:
   flutter_test:

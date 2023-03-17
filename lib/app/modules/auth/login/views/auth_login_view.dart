@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:starter/app/data/values/images.dart';
 import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/modules/auth/login/controllers/auth_login_controller.dart';
+import 'package:starter/app/modules/auth/signup/views/auth_signup_view.dart';
 import 'package:starter/app/modules/home/views/home_view.dart';
 import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_colors.dart';
@@ -54,12 +55,19 @@ class AuthLoginView extends GetView<AuthLoginController> {
                   hintText: Strings.password,
                   inputType: TextInputType.visiblePassword,
                 ),
-                SizedBox(height: 8.0),
+                SizedBox(height: 8),
                 PrimaryFilledButton(
                     // text: Strings.requestOTP,
                     text: Strings.login,
                     onTap: HomeView.launch //controller.sendOTP,
                     ),
+                SizedBox(height: 5),
+                Center(
+                  child: InkWell(
+                    child: Text(Strings.signup),
+                    onTap: AuthSignupView.launch,
+                  ),
+                )
               ],
             ),
           ),

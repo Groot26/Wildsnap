@@ -9,4 +9,6 @@ extension TextValidators on String {
   bool isValidOTP() => this.trim().length == 4;
 
   bool isValidName() => this.trim().isNotEmpty;
+
+
 }
