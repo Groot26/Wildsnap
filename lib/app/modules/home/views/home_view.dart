@@ -21,9 +21,7 @@ class HomeView extends GetView<HomeController> {
         onPressed: () {},
         backgroundColor: AppColors.white,
         foregroundColor: AppColors.primaryColor,
-
-        child: Icon(Icons.add,size: 40),
-
+        child: Icon(Icons.add, size: 40),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
@@ -64,9 +62,15 @@ class HomeView extends GetView<HomeController> {
                 child: Column(
                   children: [
                     CustomPost(
-                        userName: 'Sai._.morajkar', description: 'description ', likes: true,),
+                      userName: 'Sai._.morajkar',
+                      description: 'description',
+                      likes: true,
+                    ),
                     CustomPost(
-                        userName: 'newUser', description: 'description', likes: false,),
+                      userName: 'newUser',
+                      description: 'description',
+                      likes: false,
+                    ),
                   ],
                 ),
               ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starter/app/data/values/strings.dart';
+import 'package:starter/app/modules/home/views/home_view.dart';
+import 'package:starter/app/modules/search/views/search_view.dart';
 import 'package:starter/app/theme/app_colors.dart';
 
 class CustomBottomBar extends StatelessWidget {
@@ -17,12 +19,12 @@ class CustomBottomBar extends StatelessWidget {
           IconButton(
             tooltip: 'Home',
             icon: const Icon(Icons.home,color: AppColors.white),
-            onPressed: () {},
+            onPressed:(){HomeView.launch();},
           ),
           IconButton(
             tooltip: 'Search',
             icon: const Icon(Icons.search,color: AppColors.white),
-            onPressed: () {},
+            onPressed: SearchView.launch,
           ),
           SizedBox(width: 20,),
           IconButton(

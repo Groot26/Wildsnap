@@ -47,8 +47,6 @@ class AuthSignupController extends GetxController {
       userNameWrapper.errorText = ErrorMessages.invalidUserName;
       return;
     }
-
-
     HomeView.launch();
   }
 }

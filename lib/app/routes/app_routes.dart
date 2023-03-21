@@ -6,5 +6,6 @@ abstract class Routes {
   static const AUTH_VERIFY_OTP = '/auth/verify-otp';
   static const AUTH_SIGNUP = '/auth/signup';
   static const HOME = '/home';
+  static const SEARCH = '/search';
   static const ON_BOARDING = '/on-boarding';
 }

@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:starter/app/data/values/images.dart';
 import 'package:starter/app/data/values/strings.dart';
-import 'package:starter/app/modules/home/views/home_view.dart';
 import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_colors.dart';
 import 'package:starter/app/theme/styles.dart';
@@ -83,7 +82,7 @@ class AuthSignupView extends GetView<AuthSignupController> {
                 ),
                 PrimaryFilledButton(
                   text: Strings.proceed,
-                  onTap: (){}//HomeView.launch() //ToDo:controller.completeProfile,
+                  onTap: controller.completeProfile,
                 ),
               ],
             ),

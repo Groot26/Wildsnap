@@ -7,13 +7,13 @@ class CustomPost extends StatelessWidget {
   final String userName;
   final String description;
   final bool likes;
-  //final AssetImage profileImg;
+  //todo: final AssetImage profileImg;
 
   CustomPost({
     required this.userName,
     required this.description,
     required this.likes,
-    //required this.profileImg,
+    //todo: image location
   });
 
   @override
@@ -34,63 +34,78 @@ class CustomPost extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-                //height: 310,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    // border: Border.all(
-                    //   width: 1,
-                    //   color: AppColors.white
-                    // ),
-                    ),
-                child: Image.asset(Images.imgSamplePost)),
+              //height: 310,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  // border: Border.all(
+                  //   width: 1,
+                  //   color: AppColors.white
+                  // ),
+                  ),
+              child: Image.asset(Images.imgSamplePost),
+            ),
             Container(
-                height: 90,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColors.greyDark,
-                  border: Border.all(
-                    width: 1,
-                    color: AppColors.primaryColor,
-                  ),
-                  borderRadius: BorderRadius.vertical(
-                    bottom: Radius.circular(12),
-                  ),
+              height: 90,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: AppColors.greyDark,
+                border: Border.all(
+                  width: 1,
+                  color: AppColors.primaryColor,
                 ),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset(
-                        Images.imgSample,
-                        width: 50,
-                        height: 50,
-                      ),
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(12),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Image.asset(
+                      Images.imgSample,
+                      width: 50,
+                      height: 50,
                     ),
-                    Column(
+                  ),
+                  Expanded(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(userName, style: TextStyle(fontSize: 18)),
-                        Text(description, style: TextStyle(fontSize: 14))
+                        Text(userName, style: TextStyle(fontSize: 18),overflow: TextOverflow.ellipsis,),
+                        Text(description, style: TextStyle(fontSize: 14)),
                       ],
                     ),
-                    Spacer(),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.location_on_rounded,
-                        size: 28,
-                      ),
+                  ),
+                  //Spacer(),
+                  IconButton(
+                    onPressed: () {},
+                    iconSize: 24,
+                    padding: EdgeInsets.all(0),
+                    icon: Icon(
+                      Icons.location_on_rounded,
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.favorite_border,
-                        size: 28,
-                      ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    iconSize: 24,
+                    padding: EdgeInsets.all(0),
+                    splashRadius: 2,
+                    icon: Icon(
+                      Icons.favorite_border,
                     ),
-                  ],
-                )),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    iconSize: 24,
+                    padding: EdgeInsets.all(0),
+                    icon: Icon(
+                      Icons.messenger_outline,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
