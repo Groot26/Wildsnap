@@ -39,7 +39,7 @@ class SearchView extends GetView<SearchController> {
       //   foregroundColor: AppColors.primaryColor,
       //   child: Icon(Icons.add, size: 40),
       // ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColors.white,
@@ -50,19 +50,26 @@ class SearchView extends GetView<SearchController> {
         //Add camera and send message
       ),
       body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              SearchBar(),
-              SearchResultTile(title: 'Result 1',
-                subtitle: 'Description for result 1',
-                imageUrl: Images.imgSample,),
-            ],
-          )),
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            SearchBar(),
+            SearchResultTile(
+              title: 'Result 1',
+              subtitle: 'Description for result 1',
+              imageUrl: Images.imgSample,
+            ),
+            SearchResultTile(
+              title: 'Result 2',
+              subtitle: 'Description for result 2',
+              imageUrl: Images.imgSample,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
-
 
 //Search bar
 class SearchBar extends StatelessWidget {
@@ -90,7 +97,6 @@ class SearchBar extends StatelessWidget {
   }
 }
 
-
 //Search Result tiles
 class SearchResultTile extends StatelessWidget {
   final String title;
@@ -110,8 +116,8 @@ class SearchResultTile extends StatelessWidget {
       child: ListTile(
         leading: imageUrl.isNotEmpty
             ? CircleAvatar(
-          backgroundImage: AssetImage(imageUrl) //Images.imgSample
-        )
+                backgroundImage: AssetImage(imageUrl) //Images.imgSample
+                )
             : null,
         title: Text(title),
         subtitle: Text(subtitle),
