@@ -1,7 +1,8 @@
+import 'package:dob_input_field/dob_input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:get/get.dart';
+import 'package:starter/app/app.dart';
 import 'package:starter/app/data/values/images.dart';
 import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/routes/app_pages.dart';
@@ -9,7 +10,6 @@ import 'package:starter/app/theme/app_colors.dart';
 import 'package:starter/app/theme/styles.dart';
 import 'package:starter/widgets/buttons/primary_filled_button.dart';
 import 'package:starter/widgets/text_field/custom_text_field.dart';
-
 import '../controllers/auth_signup_controller.dart';
 
 class AuthSignupView extends GetView<AuthSignupController> {
@@ -76,7 +76,35 @@ class AuthSignupView extends GetView<AuthSignupController> {
                       inputType: TextInputType.emailAddress,
                     ),
                     SizedBox(height: 12),
-                    Text('DOB:\nGender:'),
+                    DOBInputField(
+                      firstDate: DateTime(1900),
+                      lastDate: DateTime.now(),
+                      showLabel: true,
+                      dateFormatType: DateFormatType.DDMMYYYY,
+                      autovalidateMode: AutovalidateMode.disabled,
+                      fieldLabelText: 'DOB',
+                      inputDecoration: InputDecoration(
+                        errorText: 'Invalid DOB',
+                        errorStyle: Styles.tsPrimaryColorRegular18,
+                        counterText: '',
+                        fillColor: AppColors.white,
+                        filled: true,
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppColors.errorRed,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppColors.primaryColor,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 12),
+                    //TODO: Gender Selector
                     SizedBox(height: 12),
                   ],
                 ),

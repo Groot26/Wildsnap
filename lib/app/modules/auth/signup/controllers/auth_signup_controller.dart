@@ -32,6 +32,7 @@ class AuthSignupController extends GetxController {
   completeProfile() async {
     final name = nameWrapper.controller.text;
     final userName = userNameWrapper.controller.text;
+    final phoneNumber = phoneWrapper.controller.text;
     final email = emailWrapper.controller.text;
 
     if (name.isValidName()) {
@@ -47,6 +48,14 @@ class AuthSignupController extends GetxController {
       userNameWrapper.errorText = ErrorMessages.invalidUserName;
       return;
     }
+
+    if (phoneNumber.isValidPhone()) {
+      phoneWrapper.errorText = Strings.empty;
+    } else {
+      phoneWrapper.errorText = ErrorMessages.invalidPhone;
+      return;
+    }
+
     HomeView.launch();
   }
 }
