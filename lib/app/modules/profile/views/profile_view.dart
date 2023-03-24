@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:starter/app/data/values/images.dart';
+import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/routes/app_pages.dart';
+import 'package:starter/app/theme/app_colors.dart';
+import 'package:starter/app/theme/styles.dart';
 import 'package:starter/widgets/bottomBar/custom_bottom_bar.dart';
 
 import '../controllers/profile_controller.dart';
@@ -9,16 +14,204 @@ import '../controllers/profile_controller.dart';
 class ProfileView extends GetView<ProfileController> {
   static launch() => Get.offAllNamed(Routes.PROFILE);
 
-  const ProfileView({Key? key}) : super(key: key);
+  // final String name;
+  // final String username;
+  // final String bio;
+  // final String imageUrl;
+
+  // ProfileView({
+  //   required this.name,
+  //   required this.username,
+  //   required this.bio,
+  //   required this.imageUrl,
+  // });
+
+  List<String> imageUrls = [
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+    'assets/images/img_sample_post.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomBottomBar(),
-      body: const Center(
-        child: Text(
-          'ProfileView is working',
-          style: TextStyle(fontSize: 20),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: AppColors.white,
+        title: Text(
+          Strings.appName,
+          style: Styles.tsBlackBold24,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: AppColors.white,
+        foregroundColor: AppColors.primaryColor,
+        child: Icon(Icons.add, size: 40),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  height: 160,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: AssetImage(Images.imgSamplePost),
+                      fit: BoxFit.scaleDown,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '@username',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'name',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(
+                        'bio\nDOB\nVIRGIN\nMALE',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      Center(
+                        child: ElevatedButton(
+                          child: Text('Edit Profile'),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Text(
+                      'Photos',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      '24',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: <Widget>[
+                    Text(
+                      'Followers',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      '189',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: <Widget>[
+                    Text(
+                      'Following',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      '128',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Divider(thickness: 5, height: 5),
+            PhotoGridView(imageUrls: imageUrls),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PhotoGridView extends StatelessWidget {
+  final List<String> imageUrls;
+
+  PhotoGridView({required this.imageUrls});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 2),
+      child: GridView.builder(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 2.0,
+          mainAxisSpacing: 2.0,
+        ),
+        itemCount: imageUrls.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Image.asset(
+            imageUrls[index],
+            fit: BoxFit.cover,
+          );
+        },
       ),
     );
   }
