@@ -60,129 +60,127 @@ class ProfileView extends GetView<ProfileController> {
         child: Icon(Icons.add, size: 40),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  height: 160,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(Images.imgSamplePost),
-                      fit: BoxFit.scaleDown,
-                    ),
+      body: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                height: 160,
+                width: 200,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage(Images.imgSamplePost),
+                    fit: BoxFit.scaleDown,
                   ),
                 ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '@username',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '@username',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Text(
-                        'name',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.black,
-                        ),
+                    ),
+                    Text(
+                      'name',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: AppColors.black,
                       ),
-                      Text(
-                        'bio\nDOB\nVIRGIN\nMALE',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                        ),
+                    ),
+                    Text(
+                      'bio\nDOB\nVIRGIN\nMALE',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: AppColors.grey,
                       ),
-                      Center(
-                        child: ElevatedButton(
-                          child: Text('Edit Profile'),
-                          onPressed: () {},
-                        ),
+                    ),
+                    Center(
+                      child: ElevatedButton(
+                        child: Text('Edit Profile'),
+                        onPressed: () {},
                       ),
-                    ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Text(
+                    'Photos',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Text(
-                      'Photos',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  SizedBox(height: 5),
+                  Text(
+                    '24',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColors.grey,
                     ),
-                    SizedBox(height: 5),
-                    Text(
-                      '24',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey,
-                      ),
+                  ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    'Followers',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Text(
-                      'Followers',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    '189',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColors.grey,
                     ),
-                    SizedBox(height: 5),
-                    Text(
-                      '189',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey,
-                      ),
+                  ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    'Following',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Text(
-                      'Following',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    '128',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColors.grey,
                     ),
-                    SizedBox(height: 5),
-                    Text(
-                      '128',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Divider(thickness: 5, height: 5),
-            PhotoGridView(
-              imageUrls: imageUrls,
-            ),
-          ],
-        ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(height: 20),
+          Divider(thickness: 5, height: 5),
+          PhotoGridView(
+            imageUrls: imageUrls,
+          ),
+        ],
       ),
     );
   }
@@ -197,28 +195,30 @@ class PhotoGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 2),
-      child: GridView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          crossAxisSpacing: 2.0,
-          mainAxisSpacing: 2.0,
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2),
+        child: GridView.builder(
+          scrollDirection: Axis.vertical,
+          // shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            crossAxisSpacing: 2.0,
+            mainAxisSpacing: 2.0,
+          ),
+          itemCount: imageUrls.length,
+          itemBuilder: (BuildContext context, int index) {
+            return InkWell(
+              onTap: () {
+                print("hi " + imageUrls[index]);
+              },
+              child: Image.asset(
+                imageUrls[index],
+                fit: BoxFit.cover,
+              ),
+            );
+          },
         ),
-        itemCount: imageUrls.length,
-        itemBuilder: (BuildContext context, int index) {
-          return InkWell(
-            onTap: () {
-              print("hi " + imageUrls[index]);
-            },
-            child: Image.asset(
-              imageUrls[index],
-              fit: BoxFit.cover,
-            ),
-          );
-        },
       ),
     );
   }
