@@ -7,7 +7,7 @@ import '../../app/data/values/images.dart';
 class CustomPost extends StatelessWidget {
   final String userName;
   final String description;
-  final bool likes;
+  final bool isLiked;
   final VoidCallback onLikeTap;
 
   //todo: final AssetImage profileImg;
@@ -15,7 +15,8 @@ class CustomPost extends StatelessWidget {
   CustomPost({
     required this.userName,
     required this.description,
-    required this.likes, required this.onLikeTap,
+    required this.isLiked,
+    required this.onLikeTap,
     //todo: image location
   });
 
@@ -27,10 +28,6 @@ class CustomPost extends StatelessWidget {
         //height: 400,
         width: double.infinity,
         decoration: BoxDecoration(
-          // border: Border.all(
-          //   width: 1,
-          //   color: AppColors.primaryColor,
-          // ),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -74,44 +71,22 @@ class CustomPost extends StatelessWidget {
                       children: [
                         Text(
                           userName,
-                          style: TextStyle(fontSize: 15),
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
                           description,
-                          style: TextStyle(fontSize: 10),
+                          style: TextStyle(fontSize: 12),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
                   ),
-                  // IconButton(
-                  //   onPressed: () {},
-                  //   iconSize: 20,
-                  //   padding: EdgeInsets.all(0),
-                  //   icon: Icon(
-                  //     Icons.location_on_rounded,
-                  //   ),
-                  // ),
-                  // IconButton(
-                  //   onPressed: () {},
-                  //   iconSize: 20,
-                  //   padding: EdgeInsets.all(0),
-                  //   splashRadius: 2,
-                  //   icon: Icon(
-                  //     Icons.favorite_border,
-                  //   ),
-                  // ),
-                  // IconButton(
-                  //   onPressed: () {},
-                  //   iconSize: 20,
-                  //   padding: EdgeInsets.all(0),
-                  //   icon: Icon(
-                  //     Icons.messenger_outline,
-                  //   ),
-                  // ),
                   CustomIcon(icon: Images.icLocation, onTap: () {}),
-                  CustomIcon(icon: likes ? Images.icLike :Images.icDislike, onTap: onLikeTap),
+                  CustomIcon(
+                      icon: isLiked ? Images.icLike : Images.icDislike,
+                      onTap: onLikeTap),
                   CustomIcon(icon: Images.icComment, onTap: () {}),
                 ],
               ),
@@ -126,6 +101,7 @@ class CustomPost extends StatelessWidget {
 class CustomIcon extends StatelessWidget {
   final String icon;
   final VoidCallback onTap;
+
   const CustomIcon({Key? key, required this.icon, required this.onTap})
       : super(key: key);
 
@@ -134,11 +110,11 @@ class CustomIcon extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(5),
         child: SvgPicture.asset(
           icon,
-          height: 20,
-          width: 20,
+          height: 25,
+          width: 25,
         ),
       ),
     );

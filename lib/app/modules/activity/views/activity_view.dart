@@ -11,7 +11,7 @@ import 'package:starter/widgets/bottomBar/custom_bottom_bar.dart';
 import '../controllers/activity_controller.dart';
 
 class ActivityView extends GetView<ActivityController> {
-  static launch() => Get.offAllNamed(Routes.ACTIVITY);
+  static launch() => Get.toNamed(Routes.ACTIVITY);
 
   @override
   Widget build(BuildContext context) {

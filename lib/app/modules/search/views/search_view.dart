@@ -9,7 +9,7 @@ import 'package:starter/widgets/bottomBar/custom_bottom_bar.dart';
 import '../controllers/search_controller.dart';
 
 class SearchView extends GetView<SearchController> {
-  static launch() => Get.offAllNamed(Routes.SEARCH);
+  static launch() => Get.toNamed(Routes.SEARCH);
 
   final List<Map<String, String>> searchResults = [
     {
@@ -33,13 +33,6 @@ class SearchView extends GetView<SearchController> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomBottomBar(),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {},
-      //   backgroundColor: AppColors.white,
-      //   foregroundColor: AppColors.primaryColor,
-      //   child: Icon(Icons.add, size: 40),
-      // ),
-      //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColors.white,

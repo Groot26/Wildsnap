@@ -12,6 +12,7 @@ class AuthSignupController extends GetxController {
   final phoneWrapper = TextFieldWrapper();
   final emailWrapper = TextFieldWrapper();
   final dobWrapper = TextFieldWrapper();
+  late final dob;
 
   final count = 0.obs;
 
@@ -54,6 +55,13 @@ class AuthSignupController extends GetxController {
       phoneWrapper.errorText = Strings.empty;
     } else {
       phoneWrapper.errorText = ErrorMessages.invalidPhone;
+      return;
+    }
+
+    if (email.isValidEmail()) {
+      emailWrapper.errorText = Strings.empty;
+    } else {
+      emailWrapper.errorText = ErrorMessages.invalidEmail;
       return;
     }
 

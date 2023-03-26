@@ -1,8 +1,8 @@
-import 'package:dob_input_field/dob_input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:starter/app/data/values/images.dart';
 import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/routes/app_pages.dart';
@@ -88,15 +88,39 @@ class EditProfileView extends GetView<EditProfileController> {
               SizedBox(height: 12),
               CustomTextField(
                 wrapper: controller.emailWrapper,
-                hintText: Strings.email ,
+                hintText: Strings.email,
                 inputType: TextInputType.emailAddress,
               ),
               SizedBox(height: 12),
-              //TODO: Gender Selector
+              CustomTextField(
+                suffixIcon: GestureDetector(
+                    onTap: () async {
+                      final date = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1947),
+                        lastDate: DateTime.now(),
+                      );
+                      controller.dob = date;
+                      if(controller.dob!=null) {
+                        controller.dobWrapper.controller.text =
+                            DateFormat('dd/MM/yyyy')
+                                .format(controller.dob!);
+                      }else{
+                        controller.dobWrapper.controller.text =
+                        '';
+                      }
+                    },
+                    child: Icon(Icons.calendar_month)),
+                hintText: Strings.dateOfBirth,
+                wrapper: controller.dobWrapper,
+                inputType: TextInputType.phone,
+                readOnly: true,
+              ),
               SizedBox(height: 16.0),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: controller.updateProfile,
                   child: Text('Save Changes'),
                 ),
               ),

@@ -65,7 +65,7 @@ class HomeView extends GetView<HomeController> {
                       () => CustomPost(
                         userName: 'Sai._.morajkar',
                         description: 'description\ndesc',
-                        likes: controller.isLiked.value,
+                        isLiked: controller.isLiked.value,
                         onLikeTap: () {
                           controller.isLiked.value = !controller.isLiked.value;
                         },
@@ -75,7 +75,7 @@ class HomeView extends GetView<HomeController> {
                       () => CustomPost(
                         userName: 'newUser',
                         description: 'Null',
-                        likes: controller.isLiked2.value,
+                        isLiked: controller.isLiked2.value,
                         onLikeTap: () {
                           controller.isLiked2.value =
                               !controller.isLiked2.value;

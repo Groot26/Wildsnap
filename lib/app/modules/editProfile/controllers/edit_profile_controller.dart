@@ -1,5 +1,8 @@
+
 import 'package:get/get.dart';
+import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/utils/helper/text_field_wrapper.dart';
+import 'package:starter/utils/helper/validators.dart';
 
 class EditProfileController extends GetxController {
   //TODO: Implement EditProfileController
@@ -8,6 +11,8 @@ class EditProfileController extends GetxController {
   final userNameWrapper = TextFieldWrapper();
   final phoneWrapper = TextFieldWrapper();
   final emailWrapper = TextFieldWrapper();
+  final dobWrapper = TextFieldWrapper();
+  late final dob;
 
   final count = 0.obs;
   @override
@@ -26,4 +31,48 @@ class EditProfileController extends GetxController {
   }
 
   void increment() => count.value++;
+
+  updateProfile() async {
+    final name = nameWrapper.controller.text;
+    final userName = userNameWrapper.controller.text;
+    final phoneNumber = phoneWrapper.controller.text;
+    final email = emailWrapper.controller.text;
+
+    if (name.isValidName()) {
+      nameWrapper.errorText = Strings.empty;
+    } else {
+      nameWrapper.errorText = ErrorMessages.invalidName;
+      return;
+    }
+
+    if (userName.isValidName()) {
+      userNameWrapper.errorText = Strings.empty;
+    } else {
+      userNameWrapper.errorText = ErrorMessages.invalidUserName;
+      return;
+    }
+
+    if (phoneNumber.isValidPhone()) {
+      phoneWrapper.errorText = Strings.empty;
+    } else {
+      phoneWrapper.errorText = ErrorMessages.invalidPhone;
+      return;
+    }
+
+    if (email.isValidEmail()) {
+      emailWrapper.errorText = Strings.empty;
+    } else {
+      emailWrapper.errorText = ErrorMessages.invalidEmail;
+      return;
+    }
+
+    print('profile updated');
+    //todo:
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   SnackBar(
+    //     content: Text("Profile Updated"),
+    //   ),
+    // );
+
+  }
 }

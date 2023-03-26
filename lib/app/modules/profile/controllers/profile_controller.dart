@@ -1,9 +1,18 @@
 import 'package:get/get.dart';
+import 'package:starter/app/data/values/strings.dart';
+import 'package:starter/utils/helper/text_field_wrapper.dart';
+import 'package:starter/utils/helper/validators.dart';
 
 class ProfileController extends GetxController {
-  //TODO: Implement ProfileController
+  final nameWrapper = TextFieldWrapper();
+  final userNameWrapper = TextFieldWrapper();
+  final phoneWrapper = TextFieldWrapper();
+  final emailWrapper = TextFieldWrapper();
+  final dobWrapper = TextFieldWrapper();
+  late final dob;
 
   final count = 0.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -20,4 +29,5 @@ class ProfileController extends GetxController {
   }
 
   void increment() => count.value++;
+
 }

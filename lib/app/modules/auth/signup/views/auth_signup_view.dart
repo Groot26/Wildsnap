@@ -1,4 +1,4 @@
-import 'package:dob_input_field/dob_input_field.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -101,33 +101,6 @@ class AuthSignupView extends GetView<AuthSignupController> {
                       inputType: TextInputType.phone,
                       readOnly: true,
                     ),
-                    // DOBInputField(
-                    //   firstDate: DateTime(1900),
-                    //   lastDate: DateTime.now(),
-                    //   showLabel: true,
-                    //   dateFormatType: DateFormatType.DDMMYYYY,
-                    //   autovalidateMode: AutovalidateMode.disabled,
-                    //   fieldLabelText: 'DOB',
-                    //   inputDecoration: InputDecoration(
-                    //     errorText: 'Invalid DOB',
-                    //     errorStyle: Styles.tsPrimaryColorRegular18,
-                    //     counterText: '',
-                    //     fillColor: AppColors.white,
-                    //     filled: true,
-                    //     errorBorder: OutlineInputBorder(
-                    //       borderSide: BorderSide(
-                    //         color: AppColors.errorRed,
-                    //       ),
-                    //       borderRadius: BorderRadius.circular(8.0),
-                    //     ),
-                    //     border: OutlineInputBorder(
-                    //       borderSide: BorderSide(
-                    //         color: AppColors.primaryColor,
-                    //       ),
-                    //       borderRadius: BorderRadius.circular(8.0),
-                    //     ),
-                    //   ),
-                    // ),
                     SizedBox(height: 12),
                     //TODO: Gender Selector
                     SizedBox(height: 12),

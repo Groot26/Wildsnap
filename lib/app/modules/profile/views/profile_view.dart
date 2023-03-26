@@ -11,7 +11,7 @@ import 'package:starter/widgets/bottomBar/custom_bottom_bar.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
-  static launch() => Get.offAllNamed(Routes.PROFILE);
+  static launch() => Get.toNamed(Routes.PROFILE);
 
   // final String name;
   // final String username;
