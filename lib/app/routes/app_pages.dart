@@ -8,6 +8,8 @@ import '../modules/auth/signup/bindings/auth_signup_binding.dart';
 import '../modules/auth/signup/views/auth_signup_view.dart';
 import '../modules/auth/verify-otp/bindings/auth_verify_otp_binding.dart';
 import '../modules/auth/verify-otp/views/auth_verify_otp_view.dart';
+import '../modules/editProfile/bindings/edit_profile_binding.dart';
+import '../modules/editProfile/views/edit_profile_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
@@ -67,6 +69,11 @@ class AppPages {
       name: Routes.PROFILE,
       page: () => ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: Routes.EDIT_PROFILE,
+      page: () => EditProfileView(),
+      binding: EditProfileBinding(),
     ),
   ];
 }

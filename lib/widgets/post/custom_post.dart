@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starter/app/theme/app_colors.dart';
 
 import '../../app/data/values/images.dart';
@@ -133,10 +134,10 @@ class CustomIcon extends StatelessWidget {
       onTap: () {},
       child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Image.asset(
-            Images.imgSample,
-            width: 20,
+          child: SvgPicture.asset(
+            Images.icLocation,
             height: 20,
+            width: 20,
           ),
       ),
     );

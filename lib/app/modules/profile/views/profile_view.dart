@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:starter/app/data/values/images.dart';
 import 'package:starter/app/data/values/strings.dart';
+import 'package:starter/app/modules/editProfile/views/edit_profile_view.dart';
 import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_colors.dart';
 import 'package:starter/app/theme/styles.dart';
@@ -104,7 +105,7 @@ class ProfileView extends GetView<ProfileController> {
                     Center(
                       child: ElevatedButton(
                         child: Text('Edit Profile'),
-                        onPressed: () {},
+                        onPressed: EditProfileView.launch,
                       ),
                     ),
                   ],

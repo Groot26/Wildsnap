@@ -10,4 +10,5 @@ abstract class Routes {
   static const ON_BOARDING = '/on-boarding';
   static const ACTIVITY = '/activity';
   static const PROFILE = '/profile';
+  static const EDIT_PROFILE = '/edit-profile';
 }
