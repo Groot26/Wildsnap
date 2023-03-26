@@ -7,6 +7,7 @@ class CustomPost extends StatelessWidget {
   final String userName;
   final String description;
   final bool likes;
+
   //todo: final AssetImage profileImg;
 
   CustomPost({
@@ -37,10 +38,10 @@ class CustomPost extends StatelessWidget {
               //height: 310,
               width: double.infinity,
               decoration: BoxDecoration(
-                  // border: Border.all(
-                  //   width: 1,
-                  //   color: AppColors.white
-                  // ),
+                  border: Border.all(
+                    width: 1,
+                    color: AppColors.black
+                  ),
                   ),
               child: Image.asset(Images.imgSamplePost),
             ),
@@ -63,8 +64,8 @@ class CustomPost extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     child: Image.asset(
                       Images.imgSample,
-                      width: 50,
-                      height: 50,
+                      width: 40,
+                      height: 40,
                     ),
                   ),
                   Expanded(
@@ -72,42 +73,71 @@ class CustomPost extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(userName, style: TextStyle(fontSize: 18),overflow: TextOverflow.ellipsis,),
-                        Text(description, style: TextStyle(fontSize: 14)),
+                        Text(
+                          userName,
+                          style: TextStyle(fontSize: 15),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          description,
+                          style: TextStyle(fontSize: 10),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ],
                     ),
                   ),
-                  //Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    iconSize: 24,
-                    padding: EdgeInsets.all(0),
-                    icon: Icon(
-                      Icons.location_on_rounded,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    iconSize: 24,
-                    padding: EdgeInsets.all(0),
-                    splashRadius: 2,
-                    icon: Icon(
-                      Icons.favorite_border,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    iconSize: 24,
-                    padding: EdgeInsets.all(0),
-                    icon: Icon(
-                      Icons.messenger_outline,
-                    ),
-                  ),
+                  // IconButton(
+                  //   onPressed: () {},
+                  //   iconSize: 20,
+                  //   padding: EdgeInsets.all(0),
+                  //   icon: Icon(
+                  //     Icons.location_on_rounded,
+                  //   ),
+                  // ),
+                  // IconButton(
+                  //   onPressed: () {},
+                  //   iconSize: 20,
+                  //   padding: EdgeInsets.all(0),
+                  //   splashRadius: 2,
+                  //   icon: Icon(
+                  //     Icons.favorite_border,
+                  //   ),
+                  // ),
+                  // IconButton(
+                  //   onPressed: () {},
+                  //   iconSize: 20,
+                  //   padding: EdgeInsets.all(0),
+                  //   icon: Icon(
+                  //     Icons.messenger_outline,
+                  //   ),
+                  // ),
+                  CustomIcon(),
+                  CustomIcon(),
+                  CustomIcon(),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CustomIcon extends StatelessWidget {
+  const CustomIcon({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            Images.imgSample,
+            width: 20,
+            height: 20,
+          ),
       ),
     );
   }

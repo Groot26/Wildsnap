@@ -63,12 +63,12 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     CustomPost(
                       userName: 'Sai._.morajkar',
-                      description: 'description',
+                      description: 'description\ndesc',
                       likes: true,
                     ),
                     CustomPost(
                       userName: 'newUser',
-                      description: 'description',
+                      description: 'Null',
                       likes: false,
                     ),
                   ],

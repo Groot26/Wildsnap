@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:get/get.dart';
 import 'package:starter/app/data/values/images.dart';
 import 'package:starter/app/data/values/strings.dart';
@@ -26,7 +24,7 @@ class ProfileView extends GetView<ProfileController> {
   //   required this.imageUrl,
   // });
 
-  List<String> imageUrls = [
+  final List<String> imageUrls = [
     'assets/images/img_sample_post.png',
     'assets/images/img_sample_post.png',
     'assets/images/img_sample_post.png',
@@ -180,7 +178,9 @@ class ProfileView extends GetView<ProfileController> {
             ),
             SizedBox(height: 20),
             Divider(thickness: 5, height: 5),
-            PhotoGridView(imageUrls: imageUrls),
+            PhotoGridView(
+              imageUrls: imageUrls,
+            ),
           ],
         ),
       ),
@@ -190,6 +190,8 @@ class ProfileView extends GetView<ProfileController> {
 
 class PhotoGridView extends StatelessWidget {
   final List<String> imageUrls;
+
+  //final Function? onImageTap;
 
   PhotoGridView({required this.imageUrls});
 
@@ -207,9 +209,14 @@ class PhotoGridView extends StatelessWidget {
         ),
         itemCount: imageUrls.length,
         itemBuilder: (BuildContext context, int index) {
-          return Image.asset(
-            imageUrls[index],
-            fit: BoxFit.cover,
+          return InkWell(
+            onTap: () {
+              print("hi " + imageUrls[index]);
+            },
+            child: Image.asset(
+              imageUrls[index],
+              fit: BoxFit.cover,
+            ),
           );
         },
       ),
