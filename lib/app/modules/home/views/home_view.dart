@@ -61,15 +61,26 @@ class HomeView extends GetView<HomeController> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
-                    CustomPost(
-                      userName: 'Sai._.morajkar',
-                      description: 'description\ndesc',
-                      likes: true,
+                    Obx(
+                      () => CustomPost(
+                        userName: 'Sai._.morajkar',
+                        description: 'description\ndesc',
+                        likes: controller.isLiked.value,
+                        onLikeTap: () {
+                          controller.isLiked.value = !controller.isLiked.value;
+                        },
+                      ),
                     ),
-                    CustomPost(
-                      userName: 'newUser',
-                      description: 'Null',
-                      likes: false,
+                    Obx(
+                      () => CustomPost(
+                        userName: 'newUser',
+                        description: 'Null',
+                        likes: controller.isLiked2.value,
+                        onLikeTap: () {
+                          controller.isLiked2.value =
+                              !controller.isLiked2.value;
+                        },
+                      ),
                     ),
                   ],
                 ),

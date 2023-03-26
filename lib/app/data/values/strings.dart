@@ -38,6 +38,7 @@ class Strings {
   static const address = 'Address';
   static String pinCode = 'Pincode';
   static const proceed = 'Proceed';
+  static const dateOfBirth = 'Date of Birth';
 }
 
 class ErrorMessages {

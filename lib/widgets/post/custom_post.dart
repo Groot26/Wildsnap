@@ -8,13 +8,14 @@ class CustomPost extends StatelessWidget {
   final String userName;
   final String description;
   final bool likes;
+  final VoidCallback onLikeTap;
 
   //todo: final AssetImage profileImg;
 
   CustomPost({
     required this.userName,
     required this.description,
-    required this.likes,
+    required this.likes, required this.onLikeTap,
     //todo: image location
   });
 
@@ -39,11 +40,8 @@ class CustomPost extends StatelessWidget {
               //height: 310,
               width: double.infinity,
               decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
-                    color: AppColors.black
-                  ),
-                  ),
+                border: Border.all(width: 1, color: AppColors.black),
+              ),
               child: Image.asset(Images.imgSamplePost),
             ),
             Container(
@@ -112,9 +110,9 @@ class CustomPost extends StatelessWidget {
                   //     Icons.messenger_outline,
                   //   ),
                   // ),
-                  CustomIcon(),
-                  CustomIcon(),
-                  CustomIcon(),
+                  CustomIcon(icon: Images.icLocation, onTap: () {}),
+                  CustomIcon(icon: likes ? Images.icLike :Images.icDislike, onTap: onLikeTap),
+                  CustomIcon(icon: Images.icComment, onTap: () {}),
                 ],
               ),
             ),
@@ -126,19 +124,22 @@ class CustomPost extends StatelessWidget {
 }
 
 class CustomIcon extends StatelessWidget {
-  const CustomIcon({Key? key}) : super(key: key);
+  final String icon;
+  final VoidCallback onTap;
+  const CustomIcon({Key? key, required this.icon, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SvgPicture.asset(
-            Images.icLocation,
-            height: 20,
-            width: 20,
-          ),
+        padding: const EdgeInsets.all(8.0),
+        child: SvgPicture.asset(
+          icon,
+          height: 20,
+          width: 20,
+        ),
       ),
     );
   }

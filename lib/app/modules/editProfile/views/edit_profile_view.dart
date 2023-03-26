@@ -13,7 +13,7 @@ import 'package:starter/widgets/text_field/custom_text_field.dart';
 import '../controllers/edit_profile_controller.dart';
 
 class EditProfileView extends GetView<EditProfileController> {
-  static launch() => Get.offAllNamed(Routes.EDIT_PROFILE);
+  static launch() => Get.toNamed(Routes.EDIT_PROFILE);
 
   TextEditingController _nameController = TextEditingController();
   TextEditingController _bioController = TextEditingController();

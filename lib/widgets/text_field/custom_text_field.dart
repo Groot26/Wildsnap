@@ -10,6 +10,8 @@ class CustomTextField extends StatelessWidget {
   final TextInputType inputType;
   final TextFieldWrapper wrapper;
   final bool isEnabled;
+  final Widget? suffixIcon;
+  final bool readOnly;
 
   CustomTextField({
     required this.wrapper,
@@ -17,6 +19,8 @@ class CustomTextField extends StatelessWidget {
     this.maxLength,
     this.inputType = TextInputType.text,
     this.isEnabled = true,
+    this.suffixIcon,
+    this.readOnly = false
   });
 
   @override
@@ -28,6 +32,7 @@ class CustomTextField extends StatelessWidget {
         maxLength: maxLength,
         keyboardType: inputType,
         enabled: isEnabled,
+        readOnly: readOnly,
         decoration: InputDecoration(
           errorText: wrapper.errorText.isEmpty ? null : wrapper.errorText,
           errorStyle: Styles.tsPrimaryColorRegular18,
@@ -35,6 +40,7 @@ class CustomTextField extends StatelessWidget {
           fillColor: AppColors.white,
           filled: true,
           hintText: hintText,
+          suffixIcon: suffixIcon,
           enabled: isEnabled,
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(

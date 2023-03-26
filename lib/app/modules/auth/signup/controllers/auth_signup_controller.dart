@@ -11,6 +11,7 @@ class AuthSignupController extends GetxController {
   final userNameWrapper = TextFieldWrapper();
   final phoneWrapper = TextFieldWrapper();
   final emailWrapper = TextFieldWrapper();
+  final dobWrapper = TextFieldWrapper();
 
   final count = 0.obs;
 
