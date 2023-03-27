@@ -14,6 +14,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
 import '../modules/onboarding/views/onboarding_view.dart';
+import '../modules/postPreview/bindings/post_preview_binding.dart';
+import '../modules/postPreview/views/post_preview_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/search/bindings/search_binding.dart';
@@ -74,6 +76,11 @@ class AppPages {
       name: Routes.EDIT_PROFILE,
       page: () => EditProfileView(),
       binding: EditProfileBinding(),
+    ),
+    GetPage(
+      name: Routes.POST_PREVIEW,
+      page: () =>  PostPreviewView(),
+      binding: PostPreviewBinding(),
     ),
   ];
 }

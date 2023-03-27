@@ -32,6 +32,8 @@ class Strings {
   static const userName = 'UserName';
   static const number = 'Mobile Number';
   static const email = 'Email';
+  static const location = 'Location';
+  static const caption = 'Caption';
   static const city = 'City';
   static const termsAndConditions = 'I agree to the Term and condition';
   static const referrerNumber = 'Referrer Number';
