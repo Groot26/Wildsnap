@@ -11,6 +11,7 @@ class EditProfileController extends GetxController {
   final userNameWrapper = TextFieldWrapper();
   final phoneWrapper = TextFieldWrapper();
   final emailWrapper = TextFieldWrapper();
+  final passwordWrapper = TextFieldWrapper();
   final dobWrapper = TextFieldWrapper();
   late final dob;
 
@@ -37,6 +38,7 @@ class EditProfileController extends GetxController {
     final userName = userNameWrapper.controller.text;
     final phoneNumber = phoneWrapper.controller.text;
     final email = emailWrapper.controller.text;
+    final password =passwordWrapper.controller.text;
 
     if (name.isValidName()) {
       nameWrapper.errorText = Strings.empty;
@@ -63,6 +65,14 @@ class EditProfileController extends GetxController {
       emailWrapper.errorText = Strings.empty;
     } else {
       emailWrapper.errorText = ErrorMessages.invalidEmail;
+      return;
+    }
+
+    //1upper,1lower,1char,1number,>8
+    if (password.isValidPassword()) {
+      passwordWrapper.errorText = Strings.empty;
+    } else {
+      passwordWrapper.errorText = ErrorMessages.invalidPassword;
       return;
     }
 

@@ -102,7 +102,11 @@ class AuthSignupView extends GetView<AuthSignupController> {
                       readOnly: true,
                     ),
                     SizedBox(height: 12),
-                    //TODO: Gender Selector
+                    CustomTextField(
+                      wrapper: controller.passwordWrapper,
+                      hintText: Strings.password ,
+                      inputType: TextInputType.visiblePassword,
+                    ),
                     SizedBox(height: 12),
                   ],
                 ),

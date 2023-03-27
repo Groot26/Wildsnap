@@ -66,6 +66,7 @@ class ProfileView extends GetView<ProfileController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+
               Container(
                 height: 160,
                 width: 200,

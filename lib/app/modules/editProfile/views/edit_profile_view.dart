@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'dart:io';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:starter/app/data/values/images.dart';
 import 'package:starter/app/data/values/strings.dart';
@@ -15,12 +16,16 @@ import '../controllers/edit_profile_controller.dart';
 class EditProfileView extends GetView<EditProfileController> {
   static launch() => Get.toNamed(Routes.EDIT_PROFILE);
 
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _bioController = TextEditingController();
-  TextEditingController _locationController = TextEditingController();
-  bool _isMale = true;
-  bool _isFemale = false;
-  bool _isOther = false;
+  File? _imageFile;
+
+  void _getImage(ImageSource source) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      _imageFile = File(pickedFile.path);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +63,17 @@ class EditProfileView extends GetView<EditProfileController> {
                       radius: 50.0,
                       backgroundImage: AssetImage(Images.imgSample),
                     ),
+                     _imageFile == null
+                        ? Text('No Profile')
+                        : Image.file(
+                      _imageFile!,
+                       fit: BoxFit.cover,
+                      height: 100,
+                      width: 100,
+                    ),
                     SizedBox(height: 16.0),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => _getImage(ImageSource.gallery),
                       child: Text('Change Profile Picture'),
                     ),
                   ],
@@ -102,13 +115,11 @@ class EditProfileView extends GetView<EditProfileController> {
                         lastDate: DateTime.now(),
                       );
                       controller.dob = date;
-                      if(controller.dob!=null) {
+                      if (controller.dob != null) {
                         controller.dobWrapper.controller.text =
-                            DateFormat('dd/MM/yyyy')
-                                .format(controller.dob!);
-                      }else{
-                        controller.dobWrapper.controller.text =
-                        '';
+                            DateFormat('dd/MM/yyyy').format(controller.dob!);
+                      } else {
+                        controller.dobWrapper.controller.text = '';
                       }
                     },
                     child: Icon(Icons.calendar_month)),
@@ -116,6 +127,12 @@ class EditProfileView extends GetView<EditProfileController> {
                 wrapper: controller.dobWrapper,
                 inputType: TextInputType.phone,
                 readOnly: true,
+              ),
+              SizedBox(height: 12),
+              CustomTextField(
+                wrapper: controller.passwordWrapper,
+                hintText: Strings.password ,
+                inputType: TextInputType.visiblePassword,
               ),
               SizedBox(height: 16.0),
               Center(

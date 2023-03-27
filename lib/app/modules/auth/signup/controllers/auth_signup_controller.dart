@@ -12,6 +12,7 @@ class AuthSignupController extends GetxController {
   final phoneWrapper = TextFieldWrapper();
   final emailWrapper = TextFieldWrapper();
   final dobWrapper = TextFieldWrapper();
+  final passwordWrapper = TextFieldWrapper();
   late final dob;
 
   final count = 0.obs;
@@ -36,6 +37,7 @@ class AuthSignupController extends GetxController {
     final userName = userNameWrapper.controller.text;
     final phoneNumber = phoneWrapper.controller.text;
     final email = emailWrapper.controller.text;
+    final password =passwordWrapper.controller.text;
 
     if (name.isValidName()) {
       nameWrapper.errorText = Strings.empty;
@@ -62,6 +64,14 @@ class AuthSignupController extends GetxController {
       emailWrapper.errorText = Strings.empty;
     } else {
       emailWrapper.errorText = ErrorMessages.invalidEmail;
+      return;
+    }
+
+    //1upper,1lower,1char,1number,>8
+    if (password.isValidPassword()) {
+      passwordWrapper.errorText = Strings.empty;
+    } else {
+      passwordWrapper.errorText = ErrorMessages.invalidPassword;
       return;
     }
 
