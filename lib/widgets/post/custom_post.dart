@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starter/app/theme/app_colors.dart';
 
 import '../../app/data/values/images.dart';
+import '../../app/modules/comments/views/comments_view.dart';
 
 class CustomPost extends StatelessWidget {
   final String userName;
@@ -87,7 +88,7 @@ class CustomPost extends StatelessWidget {
                   CustomIcon(
                       icon: isLiked ? Images.icLike : Images.icDislike,
                       onTap: onLikeTap),
-                  CustomIcon(icon: Images.icComment, onTap: () {}),
+                  CustomIcon(icon: Images.icComment, onTap: CommentsView.launch),
                 ],
               ),
             ),

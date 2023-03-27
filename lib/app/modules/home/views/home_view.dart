@@ -65,7 +65,7 @@ class HomeView extends GetView<HomeController> {
                     Obx(
                       () => CustomPost(
                         userName: 'Sai._.morajkar',
-                        description: 'description\ndesc',
+                        description: 'description\ndesc\nnew',
                         isLiked: controller.isLiked.value,
                         onLikeTap: () {
                           controller.isLiked.value = !controller.isLiked.value;
