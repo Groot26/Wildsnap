@@ -47,6 +47,7 @@ class ProfileView extends GetView<ProfileController> {
     return Scaffold(
       bottomNavigationBar: CustomBottomBar(),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: AppColors.white,
         title: Text(

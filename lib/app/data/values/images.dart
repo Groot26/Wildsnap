@@ -2,6 +2,7 @@ class Images {
   Images._privateConstructor();
 
   static const imgSamplePost = 'assets/images/img_sample_post.png';
+  static const imgSamplePost2 = 'assets/images/img_sample_post2.jpeg';
 
   static const imgOnboarding1 = 'assets/images/img_onboarding_1.png';
   static const imgOnboarding2 = 'assets/images/img_onboarding_2.png';

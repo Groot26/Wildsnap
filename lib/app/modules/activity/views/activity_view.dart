@@ -18,6 +18,7 @@ class ActivityView extends GetView<ActivityController> {
     return Scaffold(
       bottomNavigationBar: CustomBottomBar(),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: AppColors.white,
         title: Text(

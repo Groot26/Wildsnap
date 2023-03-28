@@ -6,6 +6,7 @@ import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_colors.dart';
 import 'package:starter/widgets/text_field/custom_text_field.dart';
+import '../../home/views/home_view.dart';
 import '../controllers/post_preview_controller.dart';
 
 class PostPreviewView extends GetView<PostPreviewController> {
@@ -15,10 +16,14 @@ class PostPreviewView extends GetView<PostPreviewController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: AppColors.white,
         centerTitle: true,
-        title: Text('New Post',style: TextStyle(color: AppColors.black),),
+        title: Text(
+          'New Post',
+          style: TextStyle(color: AppColors.black),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -63,7 +68,8 @@ class PostPreviewView extends GetView<PostPreviewController> {
                     hintText: Strings.location,
                     wrapper: controller.locationWrapper,
                   ),
-                  ElevatedButton(onPressed: () {}, child: Text('post'))
+                  ElevatedButton(
+                      onPressed: HomeView.launch, child: Text('post'))
                 ],
               ),
             ),

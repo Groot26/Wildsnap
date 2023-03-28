@@ -13,7 +13,7 @@ class AuthSignupController extends GetxController {
   final emailWrapper = TextFieldWrapper();
   final dobWrapper = TextFieldWrapper();
   final passwordWrapper = TextFieldWrapper();
-  late final dob;
+  DateTime? dob;
 
   final count = 0.obs;
 

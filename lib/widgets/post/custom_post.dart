@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starter/app/theme/app_colors.dart';
-
 import '../../app/data/values/images.dart';
 import '../../app/modules/comments/views/comments_view.dart';
 

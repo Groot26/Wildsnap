@@ -13,7 +13,7 @@ class EditProfileController extends GetxController {
   final emailWrapper = TextFieldWrapper();
   final passwordWrapper = TextFieldWrapper();
   final dobWrapper = TextFieldWrapper();
-  late final dob;
+  DateTime? dob;
 
   final count = 0.obs;
   @override
@@ -78,6 +78,7 @@ class EditProfileController extends GetxController {
 
     print('profile updated');
     //todo:
+
     // ScaffoldMessenger.of(context).showSnackBar(
     //   SnackBar(
     //     content: Text("Profile Updated"),

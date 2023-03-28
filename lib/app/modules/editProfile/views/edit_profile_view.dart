@@ -16,14 +16,18 @@ import '../controllers/edit_profile_controller.dart';
 class EditProfileView extends GetView<EditProfileController> {
   static launch() => Get.toNamed(Routes.EDIT_PROFILE);
 
-  File? _imageFile;
+  File? imageFile;
 
-  void _getImage(ImageSource source) async {
+  //File? newImage;
+
+  void getImage(ImageSource source) async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: source);
+    //final File newImage = await imageFile!.copy('assets/images/newProfile.png');
 
     if (pickedFile != null) {
-      _imageFile = File(pickedFile.path);
+      imageFile = File(pickedFile.path);
+      //newImage = await imageFile!.copy('assets/images/newProfile.png');
     }
   }
 
@@ -31,6 +35,7 @@ class EditProfileView extends GetView<EditProfileController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: AppColors.white,
         title: Text(
@@ -63,17 +68,19 @@ class EditProfileView extends GetView<EditProfileController> {
                       radius: 50.0,
                       backgroundImage: AssetImage(Images.imgSample),
                     ),
-                     _imageFile == null
+                    imageFile == null
                         ? Text('No Profile')
-                        : Image.file(
-                      _imageFile!,
-                       fit: BoxFit.cover,
-                      height: 100,
-                      width: 100,
-                    ),
+                        : Container(
+                            child: Image.file(
+                              imageFile!,
+                              height: 100,
+                              width: 100,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
                     SizedBox(height: 16.0),
                     ElevatedButton(
-                      onPressed: () => _getImage(ImageSource.gallery),
+                      onPressed: () => getImage(ImageSource.gallery),
                       child: Text('Change Profile Picture'),
                     ),
                   ],
@@ -131,13 +138,20 @@ class EditProfileView extends GetView<EditProfileController> {
               SizedBox(height: 12),
               CustomTextField(
                 wrapper: controller.passwordWrapper,
-                hintText: Strings.password ,
+                hintText: Strings.password,
                 inputType: TextInputType.visiblePassword,
               ),
               SizedBox(height: 16.0),
               Center(
                 child: ElevatedButton(
-                  onPressed: controller.updateProfile,
+                  onPressed: () {
+                    controller.updateProfile;
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Profile Updated"),
+                      ),
+                    );
+                  },
                   child: Text('Save Changes'),
                 ),
               ),
