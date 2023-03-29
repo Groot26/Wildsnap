@@ -10,9 +10,33 @@ import 'package:starter/app/theme/app_colors.dart';
 import 'package:starter/app/theme/styles.dart';
 import 'package:starter/widgets/buttons/primary_filled_button.dart';
 import 'package:starter/widgets/text_field/custom_text_field.dart';
+import '../controllers/ApiService.dart';
 
 class AuthLoginView extends GetView<AuthLoginController> {
-  static launch() => Get.offAllNamed(Routes.AUTH_LOGIN);
+  static launch() => Get.toNamed(Routes.AUTH_LOGIN);  //todo:Get.offAllNamed
+
+
+
+
+  //MARK:API Call
+  callLoginApi() {
+    final service = ApiServices();
+
+    service.apiCallLogin(
+      {
+        "email": controller.mobileWrapper.controller.text,
+        "password": controller.passWrapper.controller.text,
+
+      },
+    ).then((value) {
+      if (value.error != null) {
+        print("get data >>>>>> " + value.error!);
+      } else {
+        print(value.token!);
+        HomeView.launch();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +69,9 @@ class AuthLoginView extends GetView<AuthLoginController> {
                 ),
                 CustomTextField(
                   wrapper: controller.mobileWrapper,
-                  hintText: Strings.mobileNumber,
-                  maxLength: 10,
-                  inputType: TextInputType.number,
+                  hintText: Strings.email,
+                  //maxLength: 10,
+                  inputType: TextInputType.emailAddress,
                 ),
                 SizedBox(height: 4.0),
                 CustomTextField(
@@ -59,7 +83,8 @@ class AuthLoginView extends GetView<AuthLoginController> {
                 PrimaryFilledButton(
                     // text: Strings.requestOTP,
                     text: Strings.login,
-                    onTap: HomeView.launch //controller.sendOTP,
+                    onTap:(){callLoginApi();}
+                  //HomeView.launch //controller.sendOTP,
                     ),
                 SizedBox(height: 5),
                 Center(

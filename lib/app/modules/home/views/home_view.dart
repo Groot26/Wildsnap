@@ -12,7 +12,7 @@ import 'package:starter/widgets/post/story.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  static launch() => Get.offAllNamed(Routes.HOME);
+  static launch() => Get.toNamed(Routes.HOME);
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +26,7 @@ class HomeView extends GetView<HomeController> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: AppColors.white,
         title: Text(
