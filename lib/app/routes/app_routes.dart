@@ -13,4 +13,5 @@ abstract class Routes {
   static const EDIT_PROFILE = '/edit-profile';
   static const POST_PREVIEW = '/post-preview';
   static const COMMENTS = '/comments';
+  static const DASHBOARD = '/dashboard';
 }

@@ -17,6 +17,12 @@ class Strings {
   static const onboardingDescription2 = 'Show off your best wildlife shots.';
   static const onboardingDescription3 = 'Let\'s capture the wild side of nature!';
 
+  //Dashboard
+  static const home = 'Home';
+  static const search = 'Search';
+  static const activity = 'Activity';
+  static const profile = 'Profile';
+
   //auth_login
   static const loginAccount = 'Login Account';
   static const loginMessage = 'Hello, welcome back to your account';

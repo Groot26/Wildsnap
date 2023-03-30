@@ -45,23 +45,6 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomBar(),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        backgroundColor: AppColors.white,
-        title: Text(
-          Strings.appName,
-          style: Styles.tsBlackBold24,
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: AppColors.white,
-        foregroundColor: AppColors.primaryColor,
-        child: Icon(Icons.add, size: 40),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Column(
         children: <Widget>[
           Row(

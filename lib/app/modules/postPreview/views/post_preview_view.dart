@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:starter/app/data/values/images.dart';
 import 'package:starter/app/data/values/strings.dart';
+import 'package:starter/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_colors.dart';
 import 'package:starter/widgets/text_field/custom_text_field.dart';
@@ -69,7 +70,7 @@ class PostPreviewView extends GetView<PostPreviewController> {
                     wrapper: controller.locationWrapper,
                   ),
                   ElevatedButton(
-                      onPressed: HomeView.launch, child: Text('post'))
+                      onPressed: DashboardView.launch, child: Text('post'))
                 ],
               ),
             ),

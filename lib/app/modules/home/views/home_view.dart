@@ -17,24 +17,6 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomBar(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: PostPreviewView.launch,
-        backgroundColor: AppColors.white,
-        foregroundColor: AppColors.primaryColor,
-        child: Icon(Icons.add, size: 40),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        backgroundColor: AppColors.white,
-        title: Text(
-          Strings.appName,
-          style: Styles.tsBlackBold24,
-        ),
-        //Add camera and send message
-      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(

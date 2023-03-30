@@ -16,17 +16,6 @@ class ActivityView extends GetView<ActivityController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomBar(),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        backgroundColor: AppColors.white,
-        title: Text(
-          Strings.appName,
-          style: Styles.tsBlackBold24,
-        ),
-        //Add camera and send message
-      ),
       body:
       ListView.builder(
         itemCount: 10, // replace with actual number of activities

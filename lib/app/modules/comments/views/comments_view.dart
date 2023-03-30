@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:starter/app/data/values/images.dart';
 import 'package:starter/app/routes/app_pages.dart';
+import 'package:starter/app/theme/app_colors.dart';
 
 import '../controllers/comments_controller.dart';
 
@@ -10,7 +11,7 @@ class CommentsView extends GetView<CommentsController> {
   static launch() => Get.toNamed(Routes.COMMENTS);
 
   final List<String> comments = [
-    'comment 111111111\nnewline\nhi\nhello',
+    'comment 111111111',
     'comment 2',
     'comment 3',
     'comment 1',
@@ -34,8 +35,11 @@ class CommentsView extends GetView<CommentsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CommentsView'),
+        title: const Text('CommentsView',style: TextStyle(color: AppColors.primaryColor),),
         centerTitle: true,
+        elevation: 0,
+        backgroundColor: AppColors.white,
+        iconTheme: IconThemeData(color: AppColors.primaryColor),
       ),
       body: Column(
         children: [
@@ -46,6 +50,7 @@ class CommentsView extends GetView<CommentsController> {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 2,horizontal: 8),
                   child: Card(
+                    color: AppColors.lightBlue,
                     elevation: 2,
                     child: Padding(
                       padding: const EdgeInsets.all(10),

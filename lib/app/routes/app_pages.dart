@@ -10,6 +10,8 @@ import '../modules/auth/verify-otp/bindings/auth_verify_otp_binding.dart';
 import '../modules/auth/verify-otp/views/auth_verify_otp_view.dart';
 import '../modules/comments/bindings/comments_binding.dart';
 import '../modules/comments/views/comments_view.dart';
+import '../modules/dashboard/bindings/dashboard_binding.dart';
+import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/editProfile/bindings/edit_profile_binding.dart';
 import '../modules/editProfile/views/edit_profile_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -86,8 +88,13 @@ class AppPages {
     ),
     GetPage(
       name: Routes.COMMENTS,
-      page: () =>  CommentsView(),
+      page: () => CommentsView(),
       binding: CommentsBinding(),
+    ),
+    GetPage(
+      name: Routes.DASHBOARD,
+      page: () => DashboardView(),
+      binding: DashboardBinding(),
     ),
   ];
 }
