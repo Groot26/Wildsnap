@@ -57,7 +57,8 @@ class ErrorMessages {
   static const connectionTimeout = 'Please check your internet connection';
   static const networkGeneral = 'Something went wrong. Please try again later.';
   static const invalidPhone = 'Invalid Mobile number';
-  static const invalidPassword = 'Invalid Password';
+  static const incorrectPassword = 'Invalid Password';
+  static const invalidPassword = '*Password must be 1upper,1lower,1char,1number,>8';
   static const invalidOTP = 'Invalid OTP';
   static const invalidName = 'Invalid Name';
   static const invalidUserName = 'Invalid UserName';

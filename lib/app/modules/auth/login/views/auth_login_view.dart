@@ -5,7 +5,6 @@ import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/modules/auth/login/controllers/auth_login_controller.dart';
 import 'package:starter/app/modules/auth/signup/views/auth_signup_view.dart';
 import 'package:starter/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:starter/app/modules/home/views/home_view.dart';
 import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_colors.dart';
 import 'package:starter/app/theme/styles.dart';
@@ -17,25 +16,7 @@ class AuthLoginView extends GetView<AuthLoginController> {
   static launch() => Get.toNamed(Routes.AUTH_LOGIN);  //todo:Get.offAllNamed
 
 
-  //MARK:API Call
-  callLoginApi() {
-    final service = ApiServices();
 
-    service.apiCallLogin(
-      {
-        "email": controller.mobileWrapper.controller.text,
-        "password": controller.passWrapper.controller.text,
-
-      },
-    ).then((value) {
-      if (value.error != null) {
-        print("get data >>>>>> " + value.error!);
-      } else {
-        print(value.token!);
-        HomeView.launch();
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +48,7 @@ class AuthLoginView extends GetView<AuthLoginController> {
                   ),
                 ),
                 CustomTextField(
-                  wrapper: controller.mobileWrapper,
+                  wrapper: controller.emailWrapper,
                   hintText: Strings.email,
                   //maxLength: 10,
                   inputType: TextInputType.emailAddress,
@@ -82,12 +63,7 @@ class AuthLoginView extends GetView<AuthLoginController> {
                 PrimaryFilledButton(
                     // text: Strings.requestOTP,
                     text: Strings.login,
-                    onTap:(){
-                      //callLoginApi();
-                      //HomeView.launch();
-                      DashboardView.launch();
-                    }
-                  //HomeView.launch //controller.sendOTP,
+                    onTap: controller.sendOTP
                     ),
                  SizedBox(height: 5),
                 Center(

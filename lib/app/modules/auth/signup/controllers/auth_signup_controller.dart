@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 import 'package:starter/app/data/values/strings.dart';
+import 'package:starter/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:starter/app/modules/home/views/home_view.dart';
 import 'package:starter/utils/helper/text_field_wrapper.dart';
 import 'package:starter/utils/helper/validators.dart';
-
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 class AuthSignupController extends GetxController {
   //TODO: Implement AuthSignupController
 
@@ -15,29 +17,13 @@ class AuthSignupController extends GetxController {
   final passwordWrapper = TextFieldWrapper();
   DateTime? dob;
 
-  final count = 0.obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-
-  void increment() => count.value++;
 
   completeProfile() async {
     final name = nameWrapper.controller.text;
     final userName = userNameWrapper.controller.text;
     final phoneNumber = phoneWrapper.controller.text;
     final email = emailWrapper.controller.text;
-    final password =passwordWrapper.controller.text;
+    final password = passwordWrapper.controller.text;
 
     if (name.isValidName()) {
       nameWrapper.errorText = Strings.empty;
@@ -69,12 +55,30 @@ class AuthSignupController extends GetxController {
 
     //1upper,1lower,1char,1number,>8
     if (password.isValidPassword()) {
-      passwordWrapper.errorText = Strings.empty;
-    } else {
       passwordWrapper.errorText = ErrorMessages.invalidPassword;
-      return;
     }
 
-    HomeView.launch();
+    registrationUser();
   }
+
+  //Signup api
+  Future registrationUser() async {
+    var url = Uri.parse('http://3.109.185.64:3001/api/auth/signup');
+    //json mapping user entered details
+    Map mapData = {
+      'name': nameWrapper.controller.text,
+      'username': userNameWrapper.controller.text,
+      'phone': phoneWrapper.controller.text,
+      'email': emailWrapper.controller.text,
+      'dob': '1990-01-01',//controller.dobWrapper.controller.text,
+      'password':passwordWrapper.controller.text,
+    };
+
+    http.Response response = await http.post(url, body: mapData);
+
+    var data = jsonDecode(response.body);
+    print("DATA: $data");
+    DashboardView.launch();
+  }
+
 }

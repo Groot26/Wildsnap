@@ -72,7 +72,7 @@ class EditProfileController extends GetxController {
     if (password.isValidPassword()) {
       passwordWrapper.errorText = Strings.empty;
     } else {
-      passwordWrapper.errorText = ErrorMessages.invalidPassword;
+      passwordWrapper.errorText = ErrorMessages.incorrectPassword;
       return;
     }
 

@@ -1,47 +1,53 @@
-import 'package:get/get.dart';
-import 'package:starter/app/data/models/dto/response.dart';
-import 'package:starter/app/data/models/request/auth_request.dart';
+
 import 'package:starter/app/data/repository/user_repository.dart';
 import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/modules/auth/login/controllers/ApiService.dart';
-import 'package:starter/app/routes/app_pages.dart';
+import 'package:starter/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:starter/base/base_controller.dart';
 import 'package:starter/utils/helper/text_field_wrapper.dart';
 import 'package:starter/utils/helper/validators.dart';
-import 'package:starter/utils/loading/loading_utils.dart';
 
 class AuthLoginController extends BaseController<UserRepository> {
-  final mobileWrapper = TextFieldWrapper();
+  final emailWrapper = TextFieldWrapper();
   final passWrapper = TextFieldWrapper();
 
+  //MARK:API Call
+  callLoginApi() {
+    final service = ApiServices();
+
+    service.apiCallLogin(
+      {
+        "email": emailWrapper.controller.text,
+        "password": passWrapper.controller.text,
+      },
+    ).then((value) {
+      if (value.error != null) {
+        print("get data >>>>>> " + value.error!);
+        passWrapper.errorText = ErrorMessages.incorrectPassword;
+      } else {
+        print(value.token!);
+        DashboardView.launch(); //todo:not working
+      }
+    }
+    );
+  }
+
+
   sendOTP() async {
-    String mobile = mobileWrapper.controller.text.trim();
-    if (mobile.isValidPhone()) {
-      mobileWrapper.errorText = Strings.empty;
+    print('object');
+    String email = emailWrapper.controller.text.trim();
+    if (email.isValidEmail()) {
+      emailWrapper.errorText = Strings.empty;
     } else {
-      mobileWrapper.errorText = ErrorMessages.invalidPhone;
+      emailWrapper.errorText = ErrorMessages.invalidEmail;
       return;
     }
 
     String password = passWrapper.controller.text;
     if (password.isEmpty) {
-      mobileWrapper.errorText = Strings.empty;
-    } else {
-      mobileWrapper.errorText = ErrorMessages.invalidPhone;
-      return;
+      passWrapper.errorText = ErrorMessages.incorrectPassword;
     }
 
-
-    // LoadingUtils.showLoader();
-    // RepoResponse<bool> response =
-    //     await repository.sendOTP(SendOTPRequest(phone: mobile));
-    // LoadingUtils.hideLoader();
-    //
-    // if (response.data ?? false) {
-    //   Get.toNamed(Routes.AUTH_VERIFY_OTP, arguments: mobile);
-    // } else {
-    //   mobileWrapper.errorText = response.error?.message ?? "";
-    // }
-
+    callLoginApi();
   }
 }

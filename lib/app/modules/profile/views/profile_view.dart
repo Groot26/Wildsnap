@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:starter/app/data/values/images.dart';
-import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/modules/editProfile/views/edit_profile_view.dart';
 import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_colors.dart';
-import 'package:starter/app/theme/styles.dart';
-import 'package:starter/widgets/bottomBar/custom_bottom_bar.dart';
-
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
@@ -50,30 +46,47 @@ class ProfileView extends GetView<ProfileController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                height: 160,
-                width: 200,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage(Images.imgSamplePost),
-                    fit: BoxFit.scaleDown,
+              // Expanded(
+              //   child: Container(
+              //     height: 100,
+              //     width: 50,
+              //     decoration: BoxDecoration(
+              //       shape: BoxShape.rectangle,
+              //       image: DecorationImage(
+              //         image:
+              //        AssetImage(Images.imgSamplePost),
+              //         fit: BoxFit.contain,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              Column(
+                //todo:make colum fixed
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage(Images.imgSamplePost),
+                      radius: 66,
+                    ),
                   ),
-                ),
+                  Text(
+                    '@usernameee',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      '@username',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'name',
+                      'Sairaj Morajkar',
                       style: TextStyle(
                         fontSize: 18,
                         color: AppColors.black,
@@ -86,11 +99,18 @@ class ProfileView extends GetView<ProfileController> {
                         color: AppColors.grey,
                       ),
                     ),
-                    Center(
-                      child: ElevatedButton(
-                        child: Text('Edit Profile'),
-                        onPressed: EditProfileView.launch,
-                      ),
+                    Row(
+                      children: [
+                        ElevatedButton(
+                          child: Text('Edit Profile'),
+                          onPressed: EditProfileView.launch,
+                        ),
+                        SizedBox(width:8),
+                        ElevatedButton(
+                          child: Text('Sign Out'),
+                          onPressed: EditProfileView.launch,
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -199,7 +219,7 @@ class PhotoGridView extends StatelessWidget {
               },
               child: Image.asset(
                 imageUrls[index],
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             );
           },

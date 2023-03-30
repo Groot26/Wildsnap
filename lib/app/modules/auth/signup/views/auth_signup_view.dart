@@ -1,5 +1,3 @@
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:starter/app/data/values/images.dart';
 import 'package:starter/app/data/values/strings.dart';
-import 'package:starter/app/modules/home/views/home_view.dart';
+import 'package:starter/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_colors.dart';
 import 'package:starter/app/theme/styles.dart';
@@ -18,26 +16,7 @@ import '../controllers/auth_signup_controller.dart';
 class AuthSignupView extends GetView<AuthSignupController> {
   static launch() => Get.toNamed(Routes.AUTH_SIGNUP);
 
-  Future RegistrationUser() async {
-    // url to registration php script
-    var url = Uri.parse('http://face-brunei.at.ply.gg:40791/api/auth/signup');
-    //json maping user entered details
-    Map mapeddate = {
-      'name': controller.nameWrapper.controller.text,
-      'username': controller.userNameWrapper.controller.text,
-      'phone': controller.phoneWrapper.controller.text,
-      'email': controller.emailWrapper.controller.text,
-      'dob': '1990-01-01',//controller.dobWrapper.controller.text,
-      'password': controller.passwordWrapper.controller.text,
-    };
-    //send  data using http post to our php code
-    http.Response reponse = await http.post(url, body: mapeddate);
 
-    //getting response from php code, here
-    var data = jsonDecode(reponse.body);
-    print("DATA: ${data}");
-    HomeView.launch();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +75,7 @@ class AuthSignupView extends GetView<AuthSignupController> {
                     SizedBox(height: 12),
                     CustomTextField(
                       wrapper: controller.emailWrapper,
-                      hintText: Strings.email + ' (Optional)',
+                      hintText: Strings.email,
                       inputType: TextInputType.emailAddress,
                     ),
                     SizedBox(height: 12),
@@ -136,7 +115,7 @@ class AuthSignupView extends GetView<AuthSignupController> {
                 PrimaryFilledButton(
                   text: Strings.proceed,
                   onTap: (){
-                    RegistrationUser();
+                    controller.completeProfile();
                   }//controller.completeProfile,
                 ),
               ],
