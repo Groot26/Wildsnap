@@ -26,7 +26,7 @@ class AuthLoginController extends BaseController<UserRepository> {
         passWrapper.errorText = ErrorMessages.incorrectPassword;
       } else {
         print(value.token!);
-        DashboardView.launch(); //todo:not working
+        DashboardView.launch();
       }
     }
     );
@@ -34,7 +34,7 @@ class AuthLoginController extends BaseController<UserRepository> {
 
 
   sendOTP() async {
-    print('object');
+
     String email = emailWrapper.controller.text.trim();
     if (email.isValidEmail()) {
       emailWrapper.errorText = Strings.empty;

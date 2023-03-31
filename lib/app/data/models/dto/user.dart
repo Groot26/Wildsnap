@@ -1,24 +1,30 @@
 class User {
-  late String name;
-  late String phone;
-  late String email;
-  late List<String> address;
-  late String jwtToken;
+  late final String name;
+  late final String userName;
+  late final String phone;
+  late final String email;
+  late final String token;
+  late final String id;
+  late final String profilePic;
 
   User({
+    required this.id,
     required this.name,
+    required this.userName,
     required this.phone,
     required this.email,
-    required this.address,
-    required this.jwtToken,
+    required this.token,
+    required this.profilePic,
   });
 
   User.fromJson(Map<String, dynamic> json) {
     name = json['name'];
+    userName = json['UserName'];
     phone = json['phone'];
     email = json['email'];
-    address = json['address'].cast<String>();
-    jwtToken = json['jwtToken'];
+    token = json['token'];
+    id = json['id'];
+    profilePic = json['imageUrl'];
   }
 
   Map<String, dynamic> toJson() {
@@ -26,8 +32,10 @@ class User {
     data['name'] = this.name;
     data['phone'] = this.phone;
     data['email'] = this.email;
-    data['address'] = this.address;
-    data['jwtToken'] = this.jwtToken;
+    data['token'] = this.token;
+    data['id'] = this.id;
+    data['imageUrl'] = this.profilePic;
     return data;
   }
+
 }

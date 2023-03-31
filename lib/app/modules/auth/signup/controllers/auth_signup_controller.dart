@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:starter/app/data/values/strings.dart';
 import 'package:starter/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:starter/app/modules/home/views/home_view.dart';
 import 'package:starter/utils/helper/text_field_wrapper.dart';
 import 'package:starter/utils/helper/validators.dart';
 import 'package:http/http.dart' as http;
@@ -70,7 +69,7 @@ class AuthSignupController extends GetxController {
       'username': userNameWrapper.controller.text,
       'phone': phoneWrapper.controller.text,
       'email': emailWrapper.controller.text,
-      'dob': '1990-01-01',//controller.dobWrapper.controller.text,
+      'dob': '1990-01-01',//todo: dobWrapper.controller.text,
       'password':passwordWrapper.controller.text,
     };
 
