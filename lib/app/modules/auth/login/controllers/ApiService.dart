@@ -24,4 +24,5 @@ class LoginApiResponse{
 
   LoginApiResponse( {this.token,this.error});
 
+
 }

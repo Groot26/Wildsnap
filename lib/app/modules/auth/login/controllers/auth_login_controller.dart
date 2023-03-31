@@ -6,10 +6,12 @@ import 'package:starter/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:starter/base/base_controller.dart';
 import 'package:starter/utils/helper/text_field_wrapper.dart';
 import 'package:starter/utils/helper/validators.dart';
+import 'package:get_storage/get_storage.dart';
 
 class AuthLoginController extends BaseController<UserRepository> {
   final emailWrapper = TextFieldWrapper();
   final passWrapper = TextFieldWrapper();
+
 
   //MARK:API Call
   callLoginApi() {
@@ -25,6 +27,7 @@ class AuthLoginController extends BaseController<UserRepository> {
         print("get data >>>>>> " + value.error!);
         passWrapper.errorText = ErrorMessages.incorrectPassword;
       } else {
+        print("*********************************************************");
         print(value.token!);
         DashboardView.launch();
       }

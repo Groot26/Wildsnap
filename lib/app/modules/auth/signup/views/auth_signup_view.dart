@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:starter/app/data/values/images.dart';
 import 'package:starter/app/data/values/strings.dart';
-import 'package:starter/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_colors.dart';
 import 'package:starter/app/theme/styles.dart';
@@ -64,6 +63,7 @@ class AuthSignupView extends GetView<AuthSignupController> {
                       inputType: TextInputType.name,
                       hintText: Strings.userName,
                       wrapper: controller.userNameWrapper,
+
                     ),
                     SizedBox(height: 12),
                     CustomTextField(
@@ -116,7 +116,7 @@ class AuthSignupView extends GetView<AuthSignupController> {
                   text: Strings.proceed,
                   onTap: (){
                     controller.completeProfile();
-                  }//controller.completeProfile,
+                  }
                 ),
               ],
             ),

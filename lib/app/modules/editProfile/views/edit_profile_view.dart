@@ -15,7 +15,7 @@ import '../controllers/edit_profile_controller.dart';
 
 class EditProfileView extends GetView<EditProfileController> {
   static launch() => Get.toNamed(Routes.EDIT_PROFILE);
-
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   File? imageFile;
 
   //File? newImage;
@@ -23,17 +23,17 @@ class EditProfileView extends GetView<EditProfileController> {
   void getImage(ImageSource source) async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: source);
-    //final File newImage = await imageFile!.copy('assets/images/newProfile.png');
 
     if (pickedFile != null) {
       imageFile = File(pickedFile.path);
-      //newImage = await imageFile!.copy('assets/images/newProfile.png');
+
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key:scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
@@ -64,9 +64,11 @@ class EditProfileView extends GetView<EditProfileController> {
               Center(
                 child: Column(
                   children: [
-                    CircleAvatar(
-                      radius: 50.0,
-                      backgroundImage: AssetImage(Images.imgSample),
+                    Image.network(
+                      'https://imgtr.ee/images/2023/03/30/UlyXX.png',
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.contain,
                     ),
                     imageFile == null
                         ? Text('No Profile')
@@ -144,9 +146,9 @@ class EditProfileView extends GetView<EditProfileController> {
               SizedBox(height: 16.0),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {
-                    controller.updateProfile;
-                    ScaffoldMessenger.of(context).showSnackBar(
+                  onPressed: ()  {
+                     controller.updateProfile();
+                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text("Profile Updated"),
                       ),

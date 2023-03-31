@@ -62,6 +62,8 @@ class ErrorMessages {
   static const invalidOTP = 'Invalid OTP';
   static const invalidName = 'Invalid Name';
   static const invalidUserName = 'Invalid UserName';
+  static const userNameNotAvailable = 'UserName Is Not Available';
+  static const userNameAvailable = 'UserName Is Available';
   static const invalidEmail = 'Invalid Email';
 
   static const invalidPinCode = 'Invalid Pincode';

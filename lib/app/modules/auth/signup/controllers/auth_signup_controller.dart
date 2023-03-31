@@ -52,12 +52,35 @@ class AuthSignupController extends GetxController {
       return;
     }
 
-    //1upper,1lower,1char,1number,>8
-    if (password.isValidPassword()) {
-      passwordWrapper.errorText = ErrorMessages.invalidPassword;
-    }
+    //todo: 1upper,1lower,1char,1number,>8
+    // if (password.isValidPassword()) {
+    //   passwordWrapper.errorText = ErrorMessages.invalidPassword;
+    // }
 
-    registrationUser();
+    //registrationUser();
+    isUsernameAvailable();
+  }
+
+  Future isUsernameAvailable() async {
+
+    final userName = userNameWrapper.controller.text;
+
+    var url = Uri.parse('http://3.109.185.64:3001/api/auth/username/$userName/available');
+
+    http.Response response = await http.get(url);
+
+    if (response.statusCode == 409) {
+      print('UserName Not Available');
+      userNameWrapper.errorText = ErrorMessages.userNameNotAvailable;
+    }
+    else if (response.statusCode == 200) {
+      print('UserName Available');
+      userNameWrapper.errorText = ErrorMessages.userNameAvailable;
+      registrationUser();
+    }
+    else {
+      print('something went wrong!!');
+    }
   }
 
   //Signup api

@@ -69,21 +69,14 @@ class EditProfileController extends GetxController {
     }
 
     //1upper,1lower,1char,1number,>8
-    if (password.isValidPassword()) {
-      passwordWrapper.errorText = Strings.empty;
-    } else {
-      passwordWrapper.errorText = ErrorMessages.incorrectPassword;
-      return;
-    }
+    // if (password.isValidPassword()) {
+    //   passwordWrapper.errorText = Strings.empty;
+    // } else {
+    //   passwordWrapper.errorText = ErrorMessages.incorrectPassword;
+    //   return;
+    // }
 
     print('profile updated');
-    //todo:
-
-    // ScaffoldMessenger.of(context).showSnackBar(
-    //   SnackBar(
-    //     content: Text("Profile Updated"),
-    //   ),
-    // );
 
   }
 }

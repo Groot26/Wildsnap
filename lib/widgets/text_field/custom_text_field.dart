@@ -20,7 +20,7 @@ class CustomTextField extends StatelessWidget {
     this.inputType = TextInputType.text,
     this.isEnabled = true,
     this.suffixIcon,
-    this.readOnly = false
+    this.readOnly = false,
   });
 
   @override
