@@ -7,7 +7,6 @@ import 'package:starter/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:starter/app/routes/app_pages.dart';
 import 'package:starter/app/theme/app_colors.dart';
 import 'package:starter/widgets/text_field/custom_text_field.dart';
-import '../../home/views/home_view.dart';
 import '../controllers/post_preview_controller.dart';
 
 class PostPreviewView extends GetView<PostPreviewController> {

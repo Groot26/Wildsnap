@@ -43,6 +43,17 @@ class DashboardView extends GetView<DashboardController> {
           Strings.appName,
           style: Styles.tsBlackBold24,
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.chat_bubble_outlined,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              // do something
+            },
+          )
+        ],
       ),
       body:
         Column(
