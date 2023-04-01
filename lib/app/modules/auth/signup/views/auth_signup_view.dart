@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:starter/app/data/values/images.dart';
-import 'package:starter/app/data/values/strings.dart';
-import 'package:starter/app/routes/app_pages.dart';
-import 'package:starter/app/theme/app_colors.dart';
-import 'package:starter/app/theme/styles.dart';
-import 'package:starter/widgets/buttons/primary_filled_button.dart';
-import 'package:starter/widgets/text_field/custom_text_field.dart';
+import 'package:wildsnap/app/data/values/images.dart';
+import 'package:wildsnap/app/data/values/strings.dart';
+import 'package:wildsnap/app/routes/app_pages.dart';
+import 'package:wildsnap/app/theme/app_colors.dart';
+import 'package:wildsnap/app/theme/styles.dart';
+import 'package:wildsnap/widgets/buttons/primary_filled_button.dart';
+import 'package:wildsnap/widgets/text_field/custom_text_field.dart';
 import '../controllers/auth_signup_controller.dart';
 
 class AuthSignupView extends GetView<AuthSignupController> {
@@ -91,7 +91,7 @@ class AuthSignupView extends GetView<AuthSignupController> {
                             controller.dob = date;
                             if (controller.dob != null) {
                               controller.dobWrapper.controller.text =
-                                  DateFormat('yyyy-MM-DD')
+                                  DateFormat('yyyy-MM-dd')
                                       .format(controller.dob!);
                             } else {
                               controller.dobWrapper.controller.text = '';

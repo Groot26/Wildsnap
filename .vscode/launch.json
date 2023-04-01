@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "starter",
+            "name": "wildsnap",
             "request": "launch",
             "type": "dart"
         }

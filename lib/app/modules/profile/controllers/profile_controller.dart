@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:starter/app/data/values/strings.dart';
-import 'package:starter/utils/helper/text_field_wrapper.dart';
-import 'package:starter/utils/helper/validators.dart';
+import 'package:wildsnap/app/data/values/strings.dart';
+import 'package:wildsnap/utils/helper/text_field_wrapper.dart';
+import 'package:wildsnap/utils/helper/validators.dart';
 
 class ProfileController extends GetxController {
   final nameWrapper = TextFieldWrapper();

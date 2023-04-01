@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:starter/utils/helper/text_field_wrapper.dart';
+import 'package:wildsnap/utils/helper/text_field_wrapper.dart';
 
 class PostPreviewController extends GetxController {
   //TODO: Implement PostPreviewController

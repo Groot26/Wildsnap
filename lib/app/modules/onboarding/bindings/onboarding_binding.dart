@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:starter/app/modules/onboarding/controllers/onboarding_controller.dart';
+import 'package:wildsnap/app/modules/onboarding/controllers/onboarding_controller.dart';
 
 class OnboardingBinding extends Bindings {
   @override

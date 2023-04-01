@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:starter/app/data/models/dto/response.dart';
-import 'package:starter/app/data/values/strings.dart';
-import 'package:starter/app/theme/app_colors.dart';
-import 'package:starter/app/theme/styles.dart';
-import 'package:starter/widgets/buttons/primary_filled_button.dart';
+import 'package:wildsnap/app/data/models/dto/response.dart';
+import 'package:wildsnap/app/data/values/strings.dart';
+import 'package:wildsnap/app/theme/app_colors.dart';
+import 'package:wildsnap/app/theme/styles.dart';
+import 'package:wildsnap/widgets/buttons/primary_filled_button.dart';
 
 class ShimmerWidget<D> extends StatelessWidget {
   final Widget? error;

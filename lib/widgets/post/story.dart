@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter/app/theme/app_colors.dart';
+import 'package:wildsnap/app/theme/app_colors.dart';
 
 class Story extends StatelessWidget {
   @override

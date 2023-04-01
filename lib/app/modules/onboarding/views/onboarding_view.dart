@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:starter/app/data/values/images.dart';
-import 'package:starter/app/data/values/strings.dart';
-import 'package:starter/app/modules/auth/login/views/auth_login_view.dart';
-import 'package:starter/app/modules/onboarding/controllers/onboarding_controller.dart';
-import 'package:starter/app/routes/app_pages.dart';
-import 'package:starter/app/theme/app_colors.dart';
-import 'package:starter/app/theme/styles.dart';
+import 'package:wildsnap/app/data/values/images.dart';
+import 'package:wildsnap/app/data/values/strings.dart';
+import 'package:wildsnap/app/modules/auth/login/views/auth_login_view.dart';
+import 'package:wildsnap/app/modules/onboarding/controllers/onboarding_controller.dart';
+import 'package:wildsnap/app/routes/app_pages.dart';
+import 'package:wildsnap/app/theme/app_colors.dart';
+import 'package:wildsnap/app/theme/styles.dart';
 
 class OnboardingView extends GetView<OnboardingController> {
   static launch() => Get.offAllNamed(Routes.ON_BOARDING);

@@ -1,4 +1,4 @@
-# starter
+# wildsnap
 
 A new Flutter project.
 

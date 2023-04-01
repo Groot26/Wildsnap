@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:starter/app/data/values/images.dart';
-import 'package:starter/app/routes/app_pages.dart';
-import 'package:starter/app/theme/app_colors.dart';
+import 'package:wildsnap/app/data/values/images.dart';
+import 'package:wildsnap/app/routes/app_pages.dart';
+import 'package:wildsnap/app/theme/app_colors.dart';
 
 import '../controllers/comments_controller.dart';
 

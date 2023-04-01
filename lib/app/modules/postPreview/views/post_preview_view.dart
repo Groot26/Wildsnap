@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:starter/app/data/values/images.dart';
-import 'package:starter/app/data/values/strings.dart';
-import 'package:starter/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:starter/app/routes/app_pages.dart';
-import 'package:starter/app/theme/app_colors.dart';
-import 'package:starter/widgets/text_field/custom_text_field.dart';
+import 'package:wildsnap/app/data/values/images.dart';
+import 'package:wildsnap/app/data/values/strings.dart';
+import 'package:wildsnap/app/modules/dashboard/views/dashboard_view.dart';
+import 'package:wildsnap/app/routes/app_pages.dart';
+import 'package:wildsnap/app/theme/app_colors.dart';
+import 'package:wildsnap/widgets/text_field/custom_text_field.dart';
 import '../controllers/post_preview_controller.dart';
 
 class PostPreviewView extends GetView<PostPreviewController> {

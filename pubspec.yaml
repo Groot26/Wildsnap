@@ -1,5 +1,5 @@
-name: starter
-description: A new Flutter project.
+name: wildsnap
+description: Project WildSnap
 publish_to: "none"
 
 version: 1.0.0+1
@@ -34,6 +34,9 @@ dependencies:
   intl: ^0.18.0
 
 dev_dependencies:
+
+  change_app_package_name: ^1.1.0
+
   flutter_test:
     sdk: flutter
 

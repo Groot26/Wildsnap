@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:starter/app/modules/activity/views/activity_view.dart';
-import 'package:starter/app/modules/home/views/home_view.dart';
-import 'package:starter/app/modules/profile/views/profile_view.dart';
-import 'package:starter/app/modules/search/views/search_view.dart';
-import 'package:starter/app/theme/app_colors.dart';
+import 'package:wildsnap/app/modules/activity/views/activity_view.dart';
+import 'package:wildsnap/app/modules/home/views/home_view.dart';
+import 'package:wildsnap/app/modules/profile/views/profile_view.dart';
+import 'package:wildsnap/app/modules/search/views/search_view.dart';
+import 'package:wildsnap/app/theme/app_colors.dart';
 
 class CustomBottomBar extends StatelessWidget {
   @override

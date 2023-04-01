@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:starter/app/theme/app_colors.dart';
-import 'package:starter/app/theme/styles.dart';
-import 'package:starter/utils/helper/text_field_wrapper.dart';
+import 'package:wildsnap/app/theme/app_colors.dart';
+import 'package:wildsnap/app/theme/styles.dart';
+import 'package:wildsnap/utils/helper/text_field_wrapper.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;

@@ -1,11 +1,11 @@
 
-import 'package:starter/app/data/repository/user_repository.dart';
-import 'package:starter/app/data/values/strings.dart';
-import 'package:starter/app/modules/auth/login/controllers/ApiService.dart';
-import 'package:starter/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:starter/base/base_controller.dart';
-import 'package:starter/utils/helper/text_field_wrapper.dart';
-import 'package:starter/utils/helper/validators.dart';
+import 'package:wildsnap/app/data/repository/user_repository.dart';
+import 'package:wildsnap/app/data/values/strings.dart';
+import 'package:wildsnap/app/modules/auth/login/controllers/ApiService.dart';
+import 'package:wildsnap/app/modules/dashboard/views/dashboard_view.dart';
+import 'package:wildsnap/base/base_controller.dart';
+import 'package:wildsnap/utils/helper/text_field_wrapper.dart';
+import 'package:wildsnap/utils/helper/validators.dart';
 import 'package:get_storage/get_storage.dart';
 
 class AuthLoginController extends BaseController<UserRepository> {

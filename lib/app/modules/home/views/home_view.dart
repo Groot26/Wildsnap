@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:starter/app/routes/app_pages.dart';
-import 'package:starter/widgets/post/custom_post.dart';
-import 'package:starter/widgets/post/story.dart';
+import 'package:wildsnap/app/routes/app_pages.dart';
+import 'package:wildsnap/widgets/post/custom_post.dart';
+import 'package:wildsnap/widgets/post/story.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {

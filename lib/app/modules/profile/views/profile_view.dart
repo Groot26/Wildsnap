@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:starter/app/data/values/images.dart';
-import 'package:starter/app/modules/editProfile/views/edit_profile_view.dart';
-import 'package:starter/app/routes/app_pages.dart';
-import 'package:starter/app/theme/app_colors.dart';
+import 'package:wildsnap/app/data/values/images.dart';
+import 'package:wildsnap/app/modules/editProfile/views/edit_profile_view.dart';
+import 'package:wildsnap/app/routes/app_pages.dart';
+import 'package:wildsnap/app/theme/app_colors.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {

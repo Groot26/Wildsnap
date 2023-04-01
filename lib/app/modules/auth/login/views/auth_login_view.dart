@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:starter/app/data/values/images.dart';
-import 'package:starter/app/data/values/strings.dart';
-import 'package:starter/app/modules/auth/login/controllers/auth_login_controller.dart';
-import 'package:starter/app/modules/auth/signup/views/auth_signup_view.dart';
-import 'package:starter/app/routes/app_pages.dart';
-import 'package:starter/app/theme/app_colors.dart';
-import 'package:starter/app/theme/styles.dart';
-import 'package:starter/widgets/buttons/primary_filled_button.dart';
-import 'package:starter/widgets/text_field/custom_text_field.dart';
+import 'package:wildsnap/app/data/values/images.dart';
+import 'package:wildsnap/app/data/values/strings.dart';
+import 'package:wildsnap/app/modules/auth/login/controllers/auth_login_controller.dart';
+import 'package:wildsnap/app/modules/auth/signup/views/auth_signup_view.dart';
+import 'package:wildsnap/app/routes/app_pages.dart';
+import 'package:wildsnap/app/theme/app_colors.dart';
+import 'package:wildsnap/app/theme/styles.dart';
+import 'package:wildsnap/widgets/buttons/primary_filled_button.dart';
+import 'package:wildsnap/widgets/text_field/custom_text_field.dart';
 
 class AuthLoginView extends GetView<AuthLoginController> {
   static launch() => Get.toNamed(Routes.AUTH_LOGIN);  //todo:Get.offAllNamed

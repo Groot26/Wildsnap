@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:starter/app/modules/activity/controllers/activity_controller.dart';
-import 'package:starter/app/modules/home/controllers/home_controller.dart';
-import 'package:starter/app/modules/profile/controllers/profile_controller.dart';
-import 'package:starter/app/modules/search/controllers/search_controller.dart';
+import 'package:wildsnap/app/modules/activity/controllers/activity_controller.dart';
+import 'package:wildsnap/app/modules/home/controllers/home_controller.dart';
+import 'package:wildsnap/app/modules/profile/controllers/profile_controller.dart';
+import 'package:wildsnap/app/modules/search/controllers/search_controller.dart';
 import '../controllers/dashboard_controller.dart';
 
 class DashboardBinding extends Bindings {

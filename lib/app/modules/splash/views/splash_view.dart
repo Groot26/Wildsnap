@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:starter/app/data/values/images.dart';
-import 'package:starter/app/data/values/strings.dart';
+import 'package:wildsnap/app/data/values/images.dart';
+import 'package:wildsnap/app/data/values/strings.dart';
 
 import '../controllers/splash_controller.dart';
 
