@@ -16,7 +16,7 @@ import '../controllers/edit_profile_controller.dart';
 class EditProfileView extends GetView<EditProfileController> {
   static launch() => Get.toNamed(Routes.EDIT_PROFILE);
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  File? imageFile;
+  Rx<File?> imageFile = Rx(null);
 
   //File? newImage;
 
@@ -25,8 +25,7 @@ class EditProfileView extends GetView<EditProfileController> {
     final pickedFile = await picker.pickImage(source: source);
 
     if (pickedFile != null) {
-      imageFile = File(pickedFile.path);
-
+      imageFile.value = File(pickedFile.path);
     }
   }
 
@@ -64,22 +63,23 @@ class EditProfileView extends GetView<EditProfileController> {
               Center(
                 child: Column(
                   children: [
-                    Image.network(
-                      'https://imgtr.ee/images/2023/03/30/UlyXX.png',
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.contain,
+                    Obx(
+                    ()=> imageFile.value == null ? Image.network(
+                        'https://imgtr.ee/images/2023/03/30/UlyXX.png',
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.contain,
+                      ):ClipRRect(
+                      borderRadius: BorderRadius.circular(300),
+                      child: Image.file(
+                        imageFile.value!,
+                        height: 100,
+                        width: 100,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    imageFile == null
-                        ? Text('No Profile')
-                        : Container(
-                            child: Image.file(
-                              imageFile!,
-                              height: 100,
-                              width: 100,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                    ),
+
                     SizedBox(height: 16.0),
                     ElevatedButton(
                       onPressed: () => getImage(ImageSource.gallery),

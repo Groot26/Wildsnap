@@ -3,7 +3,6 @@ class User {
   late final String userName;
   late final String phone;
   late final String email;
-  late final String token;
   late final String id;
   late final String profilePic;
 
@@ -13,7 +12,6 @@ class User {
     required this.userName,
     required this.phone,
     required this.email,
-    required this.token,
     required this.profilePic,
   });
 
@@ -22,7 +20,6 @@ class User {
     userName = json['UserName'];
     phone = json['phone'];
     email = json['email'];
-    token = json['token'];
     id = json['id'];
     profilePic = json['imageUrl'];
   }
@@ -32,7 +29,6 @@ class User {
     data['name'] = this.name;
     data['phone'] = this.phone;
     data['email'] = this.email;
-    data['token'] = this.token;
     data['id'] = this.id;
     data['imageUrl'] = this.profilePic;
     return data;

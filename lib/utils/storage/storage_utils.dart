@@ -19,6 +19,8 @@ class Storage {
       _box.write(StorageKeys.USER, user?.toJson());
 
   static bool isUserExists() => _box.read(StorageKeys.USER) != null;
+
+  static void setAccessToken() => _box.read(StorageKeys.USER) != null;
 }
 
 class StorageKeys {

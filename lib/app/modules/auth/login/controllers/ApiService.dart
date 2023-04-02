@@ -1,6 +1,8 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:wildsnap/app/data/models/dto/user.dart';
+
 
 class ApiServices{
 
@@ -13,16 +15,15 @@ class ApiServices{
     print('Response body: ${response.body}');
 
     final data = jsonDecode(response.body);
-    return LoginApiResponse(token: data["token"], error: data["error"]);
+    return LoginApiResponse(token: data["token"], error: data["error"],data: data['user']);
   }
 }
 
 
 class LoginApiResponse{
   final String? token;
+  final User? data;
   final String? error;
 
-  LoginApiResponse( {this.token,this.error});
-
-
+  LoginApiResponse( {this.token,this.error,this.data});
 }
