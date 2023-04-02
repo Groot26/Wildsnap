@@ -53,6 +53,28 @@ class ChatView extends StatelessWidget {
                     ),
                     onTap: () => ZIMKit().showDefaultNewPeerChatDialog(context),
                   ),
+                  PopupMenuItem(
+                    value: 'New Chat Group',
+                    child: ListTile(
+                      leading: Icon(CupertinoIcons.person_2_alt),
+                      title: Text(
+                        'New Chat Group',
+                        maxLines: 1,
+                      ),
+                    ),
+                    onTap: () => ZIMKit().showDefaultNewGroupChatDialog(context),
+                  ),
+                  PopupMenuItem(
+                    value: 'Join Group',
+                    child: ListTile(
+                      leading: Icon(CupertinoIcons.group),
+                      title: Text(
+                        'Join Group',
+                        maxLines: 1,
+                      ),
+                    ),
+                    onTap: () => ZIMKit().showDefaultJoinGroupDialog(context),
+                  ),
                 ];
               })
         ],
