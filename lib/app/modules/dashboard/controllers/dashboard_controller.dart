@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:wildsnap/app/data/models/dto/user.dart';
+import 'package:wildsnap/utils/storage/storage_utils.dart';
 import '../../activity/controllers/activity_controller.dart';
 import '../../home/controllers/home_controller.dart';
 import '../../search/controllers/search_controller.dart';
@@ -9,6 +11,15 @@ class DashboardController extends GetxController{
   final RxInt _currentPage = 0.obs;
 
   int get currentPage => _currentPage.value;
+
+  late User profileDetails;
+
+  @override
+  void onInit() {
+    profileDetails = Storage.getUser();
+    super.onInit();
+  }
+
 
   switchPage(int index) {
     if (currentPage != index) {

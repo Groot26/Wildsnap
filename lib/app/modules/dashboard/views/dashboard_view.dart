@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:wildsnap/app/data/values/images.dart';
 import 'package:wildsnap/app/data/values/strings.dart';
 import 'package:wildsnap/app/modules/activity/views/activity_view.dart';
+import 'package:wildsnap/app/modules/dashboard/views/chatList_view.dart';
 import 'package:wildsnap/app/modules/home/views/home_view.dart';
 import 'package:wildsnap/app/modules/postPreview/views/post_preview_view.dart';
 import 'package:wildsnap/app/modules/profile/views/profile_view.dart';
@@ -11,52 +12,58 @@ import 'package:wildsnap/app/modules/search/views/search_view.dart';
 import 'package:wildsnap/app/routes/app_pages.dart';
 import 'package:wildsnap/app/theme/app_colors.dart';
 import 'package:wildsnap/app/theme/styles.dart';
+import 'package:zego_zimkit/services/services.dart';
 import '../controllers/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {
   static launch() => Get.toNamed(Routes.DASHBOARD);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(12),
-        child: FloatingActionButton(
-          onPressed: PostPreviewView.launch,
-          backgroundColor: AppColors.white,
-          foregroundColor: AppColors.primaryColor,
-          child: SvgPicture.asset(
-            Images.icAdd,
-            width: 50,
-            height: 50,
-            //color: iconColor,
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.all(12),
+          child: FloatingActionButton(
+            onPressed: PostPreviewView.launch,
+            backgroundColor: AppColors.white,
+            foregroundColor: AppColors.primaryColor,
+            child: SvgPicture.asset(
+              Images.icAdd,
+              width: 50,
+              height: 50,
+              //color: iconColor,
+            ),
           ),
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        backgroundColor: AppColors.white,
-        title: Text(
-          Strings.appName,
-          style: Styles.tsBlackBold24,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          backgroundColor: AppColors.white,
+          title: Text(
+            Strings.appName,
+            style: Styles.tsBlackBold24,
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.chat_bubble_outlined,
+                color: Colors.black,
+              ),
+              onPressed: () async {
+                await ZIMKit().connectUser(
+                    id: controller.profileDetails.userName,
+                    name: controller.profileDetails.name);
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => ChatView(),
+                  ),
+                );
+              },
+            )
+          ],
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.chat_bubble_outlined,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              // do something
-            },
-          )
-        ],
-      ),
-      body:
-        Column(
+        body: Column(
           children: [
             Expanded(
               child: PageView(
@@ -77,7 +84,7 @@ class DashboardView extends GetView<DashboardController> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Obx(
-                        () => BottomNavigationBarItem(
+                    () => BottomNavigationBarItem(
                       onTap: controller.moveToHome,
                       image: Images.icHome,
                       iconColor: controller.currentPage == 0
@@ -89,7 +96,7 @@ class DashboardView extends GetView<DashboardController> {
                     ),
                   ),
                   Obx(
-                        () => BottomNavigationBarItem(
+                    () => BottomNavigationBarItem(
                       onTap: controller.moveToSearch,
                       image: Images.icSearch,
                       iconColor: controller.currentPage == 1
@@ -102,7 +109,7 @@ class DashboardView extends GetView<DashboardController> {
                   ),
                   SizedBox(width: 40),
                   Obx(
-                        () => BottomNavigationBarItem(
+                    () => BottomNavigationBarItem(
                       onTap: controller.moveToActivity,
                       image: Images.icActivity,
                       iconColor: controller.currentPage == 2
@@ -114,7 +121,7 @@ class DashboardView extends GetView<DashboardController> {
                     ),
                   ),
                   Obx(
-                        () => BottomNavigationBarItem(
+                    () => BottomNavigationBarItem(
                       onTap: controller.moveToProfile,
                       image: Images.icProfile,
                       iconColor: controller.currentPage == 3
@@ -129,8 +136,7 @@ class DashboardView extends GetView<DashboardController> {
               ),
             ),
           ],
-        )
-    );
+        ));
   }
 }
 
@@ -160,7 +166,7 @@ class BottomNavigationBarItem extends StatelessWidget {
                 image,
                 width: 24,
                 height: 24,
-                colorFilter: ColorFilter.mode(iconColor,BlendMode.srcIn),
+                colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
               ),
             ],
           ),

@@ -10,18 +10,6 @@ import '../controllers/profile_controller.dart';
 class ProfileView extends GetView<ProfileController> {
   static launch() => Get.toNamed(Routes.PROFILE);
 
-  // final String name;
-  // final String username;
-  // final String bio;
-  // final String imageUrl;
-
-  // ProfileView({
-  //   required this.name,
-  //   required this.username,
-  //   required this.bio,
-  //   required this.imageUrl,
-  // });
-
   final List<String> imageUrls = [
     'assets/images/img_sample_post.png',
     'assets/images/img_sample_post.png',
@@ -47,20 +35,6 @@ class ProfileView extends GetView<ProfileController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              // Expanded(
-              //   child: Container(
-              //     height: 100,
-              //     width: 50,
-              //     decoration: BoxDecoration(
-              //       shape: BoxShape.rectangle,
-              //       image: DecorationImage(
-              //         image:
-              //        AssetImage(Images.imgSamplePost),
-              //         fit: BoxFit.contain,
-              //       ),
-              //     ),
-              //   ),
-              // ),
               Column(
                 //todo:make colum fixed
                 children: [

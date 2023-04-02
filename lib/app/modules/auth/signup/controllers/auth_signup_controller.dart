@@ -115,7 +115,6 @@ class AuthSignupController extends GetxController {
       await Storage.setUser(user);
       DashboardView.launch();
     }
-
   }
 
 }
