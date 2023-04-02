@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wildsnap/app/data/values/images.dart';
+import 'package:wildsnap/app/modules/auth/login/views/auth_login_view.dart';
 import 'package:wildsnap/app/modules/editProfile/views/edit_profile_view.dart';
 import 'package:wildsnap/app/routes/app_pages.dart';
 import 'package:wildsnap/app/theme/app_colors.dart';
@@ -66,12 +67,14 @@ class ProfileView extends GetView<ProfileController> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: CircleAvatar(
-                      backgroundImage: AssetImage(Images.imgSamplePost),
+                      backgroundImage: NetworkImage(
+                        controller.profileDetails.profilePic,
+                      ),
                       radius: 66,
                     ),
                   ),
                   Text(
-                    '@usernameee',
+                    controller.profileDetails.userName,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 18,
@@ -86,14 +89,18 @@ class ProfileView extends GetView<ProfileController> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      'Sairaj Morajkar',
+                      controller.profileDetails.name,
                       style: TextStyle(
                         fontSize: 18,
                         color: AppColors.black,
                       ),
                     ),
                     Text(
-                      'bio\nDOB\nVIRGIN\nMALE',
+                      controller.profileDetails.phone +
+                          "\n" +
+                          controller.profileDetails.email +
+                          "\n" +
+                          controller.profileDetails.phone,
                       style: TextStyle(
                         fontSize: 16,
                         color: AppColors.grey,
@@ -105,10 +112,13 @@ class ProfileView extends GetView<ProfileController> {
                           child: Text('Edit Profile'),
                           onPressed: EditProfileView.launch,
                         ),
-                        SizedBox(width:8),
+                        SizedBox(width: 8),
                         ElevatedButton(
                           child: Text('Sign Out'),
-                          onPressed: EditProfileView.launch,
+                          onPressed: () async {
+                            await controller.signOut();
+                            AuthLoginView.launch();
+                          },
                         ),
                       ],
                     ),
@@ -151,7 +161,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '189',
+                    controller.profileDetails.followersCount.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,
@@ -170,7 +180,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '128',
+                    controller.profileDetails.followingCount.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,

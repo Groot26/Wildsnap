@@ -1,8 +1,10 @@
 
 import 'package:get/get.dart';
+import 'package:wildsnap/app/data/models/dto/user.dart';
 import 'package:wildsnap/app/data/values/strings.dart';
 import 'package:wildsnap/utils/helper/text_field_wrapper.dart';
 import 'package:wildsnap/utils/helper/validators.dart';
+import 'package:wildsnap/utils/storage/storage_utils.dart';
 
 class EditProfileController extends GetxController {
   //TODO: Implement EditProfileController
@@ -15,9 +17,12 @@ class EditProfileController extends GetxController {
   final dobWrapper = TextFieldWrapper();
   DateTime? dob;
 
+  late User profileDetails;
+
   final count = 0.obs;
   @override
   void onInit() {
+    profileDetails = Storage.getUser();
     super.onInit();
   }
 
@@ -68,7 +73,7 @@ class EditProfileController extends GetxController {
       return;
     }
 
-    //1upper,1lower,1char,1number,>8
+    //todo: 1upper,1lower,1char,1number,>8
     // if (password.isValidPassword()) {
     //   passwordWrapper.errorText = Strings.empty;
     // } else {
@@ -76,6 +81,7 @@ class EditProfileController extends GetxController {
     //   return;
     // }
 
+    Get.snackbar('Profile Updated','');
     print('profile updated');
 
   }

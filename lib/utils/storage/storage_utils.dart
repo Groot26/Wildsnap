@@ -15,12 +15,14 @@ class Storage {
 
   static User getUser() => User.fromJson(_box.read(StorageKeys.USER));
 
-  static void setUser(User? user) =>
-      _box.write(StorageKeys.USER, user?.toJson());
+  static Future<void> setUser(User? user) async =>
+    await  _box.write(StorageKeys.USER, user?.toJson());
 
   static bool isUserExists() => _box.read(StorageKeys.USER) != null;
 
   static void setAccessToken() => _box.read(StorageKeys.USER) != null;
+
+  static Future <void> clearStorage() async => await _box.erase();
 }
 
 class StorageKeys {

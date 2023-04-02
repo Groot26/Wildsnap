@@ -1,10 +1,13 @@
 import 'package:get/get.dart';
+import 'package:wildsnap/app/data/models/dto/user.dart';
 import 'package:wildsnap/app/data/values/strings.dart';
 import 'package:wildsnap/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:wildsnap/utils/helper/text_field_wrapper.dart';
 import 'package:wildsnap/utils/helper/validators.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:wildsnap/utils/storage/storage_utils.dart';
 class AuthSignupController extends GetxController {
   //TODO: Implement AuthSignupController
 
@@ -100,15 +103,19 @@ class AuthSignupController extends GetxController {
 
     var data = jsonDecode(response.body);
     print("DATA: $data");
+    //print("statusCode:" + data['statusCode']);
 
-    // if(response.error == null){
-    //   // Storage.setUser(response.data);
-    //   DashboardView.launch();
-    // }else{
-    //   Get.snackbar('Something went Wrong', response.error!.message);
-    // }
 
-    DashboardView.launch();
+    if(data['token'] == null){
+      // Storage.setUser(response.data);
+      Get.snackbar('Something went Wrong', data['message']);
+    }else{
+
+      final user = User.fromJson(data['user']);
+      await Storage.setUser(user);
+      DashboardView.launch();
+    }
+
   }
 
 }

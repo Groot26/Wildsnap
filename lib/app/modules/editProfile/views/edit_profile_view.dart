@@ -65,7 +65,7 @@ class EditProfileView extends GetView<EditProfileController> {
                   children: [
                     Obx(
                     ()=> imageFile.value == null ? Image.network(
-                        'https://imgtr.ee/images/2023/03/30/UlyXX.png',
+                      controller.profileDetails.profilePic,
                         width: 100,
                         height: 100,
                         fit: BoxFit.contain,
@@ -148,11 +148,6 @@ class EditProfileView extends GetView<EditProfileController> {
                 child: ElevatedButton(
                   onPressed: ()  {
                      controller.updateProfile();
-                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text("Profile Updated"),
-                      ),
-                    );
                   },
                   child: Text('Save Changes'),
                 ),

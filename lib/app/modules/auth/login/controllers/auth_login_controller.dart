@@ -7,7 +7,6 @@ import 'package:wildsnap/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:wildsnap/base/base_controller.dart';
 import 'package:wildsnap/utils/helper/text_field_wrapper.dart';
 import 'package:wildsnap/utils/helper/validators.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:wildsnap/utils/storage/storage_utils.dart';
 
 class AuthLoginController extends BaseController<UserRepository> {
@@ -24,15 +23,17 @@ class AuthLoginController extends BaseController<UserRepository> {
         "email": emailWrapper.controller.text,
         "password": passWrapper.controller.text,
       },
-    ).then((value) {
+    ).then((value) async {
       if (value.error != null) {
         print("get data >>>>>> " + value.error!);
         Get.snackbar('Something went Wrong', value.error!);
         passWrapper.errorText = ErrorMessages.incorrectPassword;
       } else {
         print("*********************************************************");
-        Storage.setUser(value.data);
-        print('---user ' + value.data!.toString());
+        await Storage.setUser (value.data);
+        print('---user--- ' + value.data!.userName);
+        //print('---value--- ' + value);
+        print('---Token--- '+ value.token.toString());
         DashboardView.launch();
       }
     }

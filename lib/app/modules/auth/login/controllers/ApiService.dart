@@ -15,7 +15,8 @@ class ApiServices{
     print('Response body: ${response.body}');
 
     final data = jsonDecode(response.body);
-    return LoginApiResponse(token: data["token"], error: data["error"],data: data['user']);
+    final user = User.fromJson(data['user']);
+    return LoginApiResponse(token: data["token"], error: data["error"],data: user );
   }
 }
 

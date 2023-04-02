@@ -11,7 +11,7 @@ import 'package:wildsnap/widgets/buttons/primary_filled_button.dart';
 import 'package:wildsnap/widgets/text_field/custom_text_field.dart';
 
 class AuthLoginView extends GetView<AuthLoginController> {
-  static launch() => Get.toNamed(Routes.AUTH_LOGIN);  //todo:Get.offAllNamed
+  static launch() => Get.offAllNamed(Routes.AUTH_LOGIN);  //todo:Get.offAllNamed
 
   @override
   Widget build(BuildContext context) {
