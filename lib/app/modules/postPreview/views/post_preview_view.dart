@@ -69,7 +69,7 @@ class PostPreviewView extends GetView<PostPreviewController> {
                     wrapper: controller.locationWrapper,
                   ),
                   ElevatedButton(
-                      onPressed: DashboardView.launch, child: Text('post'))
+                      onPressed: Get.back, child: Text('post'))
                 ],
               ),
             ),

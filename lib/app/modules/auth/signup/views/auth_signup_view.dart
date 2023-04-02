@@ -15,8 +15,6 @@ import '../controllers/auth_signup_controller.dart';
 class AuthSignupView extends GetView<AuthSignupController> {
   static launch() => Get.toNamed(Routes.AUTH_SIGNUP);
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,7 +1,7 @@
 class Env {
   Env._privateConstructor();
 
-  static const title = "Sample Project";
+  static const title = "Wildsnap";
 
-  static const baseURL = "http://127.0.0.1:8080/";
+  static const baseURL = "http://3.109.185.64:3001/";
 }
