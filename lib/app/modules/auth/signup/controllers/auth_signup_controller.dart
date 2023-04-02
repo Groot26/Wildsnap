@@ -1,11 +1,18 @@
+
 import 'package:get/get.dart';
+import 'package:wildsnap/app/data/models/request/auth_request.dart';
+import 'package:wildsnap/app/data/repository/user_repository.dart';
 import 'package:wildsnap/app/data/values/strings.dart';
 import 'package:wildsnap/app/modules/dashboard/views/dashboard_view.dart';
+import 'package:wildsnap/base/base_controller.dart';
 import 'package:wildsnap/utils/helper/text_field_wrapper.dart';
 import 'package:wildsnap/utils/helper/validators.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
-class AuthSignupController extends GetxController {
+
+
+import 'package:wildsnap/utils/storage/storage_utils.dart';
+
+class AuthSignupController extends BaseController<UserRepository> {
   //TODO: Implement AuthSignupController
 
   final nameWrapper = TextFieldWrapper();
@@ -15,7 +22,6 @@ class AuthSignupController extends GetxController {
   final dobWrapper = TextFieldWrapper();
   final passwordWrapper = TextFieldWrapper();
   DateTime? dob;
-
 
   completeProfile() async {
     final name = nameWrapper.controller.text;
@@ -62,45 +68,42 @@ class AuthSignupController extends GetxController {
   }
 
   Future isUsernameAvailable() async {
-
     final userName = userNameWrapper.controller.text;
 
-    var url = Uri.parse('http://3.109.185.64:3001/api/auth/username/$userName/available');
+    var url = Uri.parse(
+        'http://3.109.185.64:3001/api/auth/username/$userName/available');
 
     http.Response response = await http.get(url);
 
     if (response.statusCode == 409) {
       print('UserName Not Available');
       userNameWrapper.errorText = ErrorMessages.userNameNotAvailable;
-    }
-    else if (response.statusCode == 200) {
+    } else if (response.statusCode == 200) {
       print('UserName Available');
       userNameWrapper.errorText = ErrorMessages.userNameAvailable;
       registrationUser();
-    }
-    else {
+    } else {
       print('something went wrong!!');
     }
   }
 
   //Signup api
   Future registrationUser() async {
-    var url = Uri.parse('http://3.109.185.64:3001/api/auth/signup');
-    //json mapping user entered details
-    Map mapData = {
-      'name': nameWrapper.controller.text,
-      'username': userNameWrapper.controller.text,
-      'phone': phoneWrapper.controller.text,
-      'email': emailWrapper.controller.text,
-      'dob':  dobWrapper.controller.text,
-      'password':passwordWrapper.controller.text,
-    };
+    final response = await repository.signUp(SignUpRequest(
+      name: nameWrapper.controller.text,
+      userName: userNameWrapper.controller.text,
+      phone: phoneWrapper.controller.text,
+      dob: dobWrapper.controller.text,
+      email: emailWrapper.controller.text,
+      password: passwordWrapper.controller.text,
+    ));
 
-    http.Response response = await http.post(url, body: mapData);
+    if(response.error == null){
+      Storage.setUser(response.data);
+      DashboardView.launch();
+    }else{
+      Get.snackbar('Something went Wrong', response.error!.message);
+    }
 
-    var data = jsonDecode(response.body);
-    print("DATA: $data");
-    DashboardView.launch();
   }
-
 }

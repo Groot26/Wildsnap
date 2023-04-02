@@ -15,23 +15,7 @@ class EditProfileController extends GetxController {
   final dobWrapper = TextFieldWrapper();
   DateTime? dob;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 
   updateProfile() async {
     final name = nameWrapper.controller.text;

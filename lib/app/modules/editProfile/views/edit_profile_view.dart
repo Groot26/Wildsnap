@@ -148,11 +148,6 @@ class EditProfileView extends GetView<EditProfileController> {
                 child: ElevatedButton(
                   onPressed: ()  {
                      controller.updateProfile();
-                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text("Profile Updated"),
-                      ),
-                    );
                   },
                   child: Text('Save Changes'),
                 ),

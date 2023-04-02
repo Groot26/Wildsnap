@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wildsnap/app/data/values/images.dart';
@@ -71,7 +72,7 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                   ),
                   Text(
-                    '@usernameee',
+                   'sai',
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 18,

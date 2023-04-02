@@ -8,4 +8,6 @@ class URLs {
   static const sendOTP = "api/auth/send-otp";
   static const verifyOTP = "api/auth/verify-otp";
   static const signUp = "/api/auth/signup";
+  static const login = "/api/auth/login";
+
 }
