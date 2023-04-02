@@ -1,4 +1,5 @@
 
+import 'package:get/get.dart';
 import 'package:wildsnap/app/data/repository/user_repository.dart';
 import 'package:wildsnap/app/data/values/strings.dart';
 import 'package:wildsnap/app/modules/auth/login/controllers/ApiService.dart';
@@ -25,6 +26,7 @@ class AuthLoginController extends BaseController<UserRepository> {
     ).then((value) {
       if (value.error != null) {
         print("get data >>>>>> " + value.error!);
+        Get.snackbar('Something went Wrong', value.error!);
         passWrapper.errorText = ErrorMessages.incorrectPassword;
       } else {
         print("*********************************************************");

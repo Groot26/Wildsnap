@@ -100,6 +100,14 @@ class AuthSignupController extends GetxController {
 
     var data = jsonDecode(response.body);
     print("DATA: $data");
+
+    // if(response.error == null){
+    //   // Storage.setUser(response.data);
+    //   DashboardView.launch();
+    // }else{
+    //   Get.snackbar('Something went Wrong', response.error!.message);
+    // }
+
     DashboardView.launch();
   }
 
