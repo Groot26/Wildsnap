@@ -28,6 +28,7 @@ class Strings {
   static const loginMessage = 'Hello, welcome back to your account';
   static const mobileNumber = 'Mobile Number';
   static const password = 'Password';
+  static const bio = 'Bio';
   static const login = 'Login';
   static const signup = 'Don\'t have account? \n click to create new';
 

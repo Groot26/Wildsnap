@@ -139,9 +139,9 @@ class EditProfileView extends GetView<EditProfileController> {
               ),
               SizedBox(height: 12),
               CustomTextField(
-                wrapper: controller.passwordWrapper,
-                hintText: Strings.password,
-                inputType: TextInputType.visiblePassword,
+                wrapper: controller.bioWrapper,
+                hintText: Strings.bio,
+                inputType: TextInputType.text,
               ),
               SizedBox(height: 16.0),
               Center(

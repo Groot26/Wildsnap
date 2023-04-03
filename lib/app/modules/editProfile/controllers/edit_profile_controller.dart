@@ -1,4 +1,5 @@
-
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:wildsnap/app/data/models/dto/user.dart';
 import 'package:wildsnap/app/data/values/strings.dart';
@@ -13,16 +14,18 @@ class EditProfileController extends GetxController {
   final userNameWrapper = TextFieldWrapper();
   final phoneWrapper = TextFieldWrapper();
   final emailWrapper = TextFieldWrapper();
-  final passwordWrapper = TextFieldWrapper();
+  final bioWrapper = TextFieldWrapper();
   final dobWrapper = TextFieldWrapper();
   DateTime? dob;
 
   late User profileDetails;
 
   final count = 0.obs;
+
   @override
   void onInit() {
     profileDetails = Storage.getUser();
+    fillDetails();
     super.onInit();
   }
 
@@ -38,12 +41,25 @@ class EditProfileController extends GetxController {
 
   void increment() => count.value++;
 
+  fillDetails() {
+    nameWrapper.controller.text = profileDetails.name;
+    userNameWrapper.controller.text = profileDetails.userName;
+    phoneWrapper.controller.text = profileDetails.phone;
+    emailWrapper.controller.text = profileDetails.email;
+    if(profileDetails.bio!=null) {
+      bioWrapper.controller.text = profileDetails.bio!;
+    }
+    else{
+      bioWrapper.controller.text = '';
+    }
+  }
+
   updateProfile() async {
     final name = nameWrapper.controller.text;
     final userName = userNameWrapper.controller.text;
     final phoneNumber = phoneWrapper.controller.text;
     final email = emailWrapper.controller.text;
-    final password =passwordWrapper.controller.text;
+
 
     if (name.isValidName()) {
       nameWrapper.errorText = Strings.empty;
@@ -73,16 +89,38 @@ class EditProfileController extends GetxController {
       return;
     }
 
-    //todo: 1upper,1lower,1char,1number,>8
-    // if (password.isValidPassword()) {
-    //   passwordWrapper.errorText = Strings.empty;
-    // } else {
-    //   passwordWrapper.errorText = ErrorMessages.incorrectPassword;
-    //   return;
-    // }
 
-    Get.snackbar('Profile Updated','');
+
+    Get.snackbar('Profile Updated', '');
     print('profile updated');
-
   }
+
+
+  Future updateUserDetails() async {
+    var url = Uri.parse('http://3.109.185.64:3001/api/user');
+    //json mapping user entered details
+    Map mapData = {
+      'name': nameWrapper.controller.text,
+      'username': userNameWrapper.controller.text,
+      'phone': phoneWrapper.controller.text,
+      'email': emailWrapper.controller.text,
+      'dob':  dobWrapper.controller.text,
+      'bio':  bioWrapper.controller.text,
+    };
+
+    http.Response response = await http.patch(url, body: mapData,);
+
+    // var data = jsonDecode(response.body);
+    // print("DATA: $data");
+    // //print("statusCode:" + data['statusCode']);
+    //
+    // if(data['token'] == null){
+    //   // Storage.setUser(response.data);
+    //   Get.snackbar('Something went Wrong', data['message']);
+    // }else{
+    //   final user = User.fromJson(data['user']);
+    //   await Storage.setUser(user);
+    // }
+  }
+
 }

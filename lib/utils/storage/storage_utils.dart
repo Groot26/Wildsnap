@@ -18,6 +18,7 @@ class Storage {
   static Future<void> setUser(User? user) async =>
     await  _box.write(StorageKeys.USER, user?.toJson());
 
+
   static bool isUserExists() => _box.read(StorageKeys.USER) != null;
 
   static void setAccessToken() => _box.read(StorageKeys.USER) != null;
