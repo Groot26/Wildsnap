@@ -19,6 +19,12 @@ class ProfileController extends GetxController {
   @override
   void onInit() {
     profileDetails = Storage.getUser();
+    print(profileDetails.followersCount.toString());
+    print(profileDetails.followingCount.toString());
+    print(profileDetails.id.toString());
+    //print(profileDetails.token.toString());
+    print(profileDetails.name.toString());
+
     super.onInit();
   }
 

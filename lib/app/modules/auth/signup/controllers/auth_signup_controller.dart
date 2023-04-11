@@ -5,6 +5,7 @@ import 'package:wildsnap/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:wildsnap/utils/helper/text_field_wrapper.dart';
 import 'package:wildsnap/utils/helper/validators.dart';
 import 'package:http/http.dart' as http;
+import 'package:wildsnap/utils/loading/loading_utils.dart';
 import 'dart:convert';
 
 import 'package:wildsnap/utils/storage/storage_utils.dart';
@@ -102,17 +103,24 @@ class AuthSignupController extends GetxController {
     http.Response response = await http.post(url, body: mapData);
 
     var data = jsonDecode(response.body);
+
+    print("Status: " + response.statusCode.toString());
     print("DATA: $data");
-    //print("statusCode:" + data['statusCode']);
+
 
 
     if(data['token'] == null){
       // Storage.setUser(response.data);
       Get.snackbar('Something went Wrong', data['message']);
     }else{
-
+      //final token = User.fromJson(data['token']);
+      //print("token: " + token.toString());
+      LoadingUtils.showLoader();
       final user = User.fromJson(data['user']);
+      print('-----------saving----------');
       await Storage.setUser(user);
+      //await Storage.setUser(token);
+      LoadingUtils.hideLoader();
       DashboardView.launch();
     }
   }

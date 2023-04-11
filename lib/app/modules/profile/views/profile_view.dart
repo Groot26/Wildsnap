@@ -74,12 +74,20 @@ class ProfileView extends GetView<ProfileController> {
                           "\n" +
                           controller.profileDetails.email +
                           "\n" +
-                          controller.profileDetails.phone,
+                          controller.profileDetails.dob,
                       style: TextStyle(
                         fontSize: 16,
                         color: AppColors.grey,
                       ),
                     ),
+                    //if(controller.profileDetails.bio==null)
+                    // Text(
+                    //   controller.profileDetails.bio!,
+                    //   style: TextStyle(
+                    //     fontSize: 16,
+                    //     color: AppColors.grey,
+                    //   ),
+                    // ),
                     Row(
                       children: [
                         ElevatedButton(
@@ -116,7 +124,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '24',
+                    imageUrls.length.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,
@@ -135,7 +143,8 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    controller.profileDetails.followersCount.toString(),
+                    '0',
+                    //controller.profileDetails.followersCount.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,
@@ -154,7 +163,8 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    controller.profileDetails.followingCount.toString(),
+                    '0',
+                    //controller.profileDetails.followingCount.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,

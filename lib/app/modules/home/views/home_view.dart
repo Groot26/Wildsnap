@@ -8,33 +8,26 @@ import '../controllers/home_controller.dart';
 class HomeView extends GetView<HomeController> {
   static launch() => Get.toNamed(Routes.HOME);
 
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Story(),
-                    Story(),
-                    Story(),
-                    Story(),
-                    Story(),
-                    Story(),
-                    Story(),
-                  ],
-                ),
-              ),
-            ),
+            //todo story
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(vertical: 8),
+            //   child: SingleChildScrollView(
+            //     scrollDirection: Axis.horizontal,
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.start,
+            //       children: [
+            //       Story(),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.all(20),
               child: SingleChildScrollView(

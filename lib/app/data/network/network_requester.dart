@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:wildsnap/app/data/values/constants.dart';
 import 'package:wildsnap/app/data/values/env.dart';
 import 'package:wildsnap/utils/helper/exception_handler.dart';
+import 'package:wildsnap/utils/storage/storage_utils.dart';
 
 class NetworkRequester {
   late Dio _dio;
@@ -19,7 +20,7 @@ class NetworkRequester {
       baseUrl: Env.baseURL,
       contentType: Headers.formUrlEncodedContentType,
       responseType: ResponseType.json,
-      headers: {'Accept': Headers.jsonContentType},
+      headers: {'Accept': Headers.jsonContentType,'Authorization': 'Bearer ${Storage.getToken()}'},
     );
 
     _dio = Dio(dioOptions);

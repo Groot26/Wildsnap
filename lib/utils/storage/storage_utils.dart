@@ -16,14 +16,17 @@ class Storage {
   static User getUser() => User.fromJson(_box.read(StorageKeys.USER));
 
   static Future<void> setUser(User? user) async =>
-    await  _box.write(StorageKeys.USER, user?.toJson());
+      await _box.write(StorageKeys.USER, user?.toJson());
 
+  static Future<void> setToken(String? token) async =>
+      await _box.write(StorageKeys.TOKEN, token);
+
+  static String? getToken() => _box.read(StorageKeys.TOKEN);
 
   static bool isUserExists() => _box.read(StorageKeys.USER) != null;
 
-  static void setAccessToken() => _box.read(StorageKeys.USER) != null;
 
-  static Future <void> clearStorage() async => await _box.erase();
+  static Future<void> clearStorage() async => await _box.erase();
 }
 
 class StorageKeys {
@@ -31,4 +34,5 @@ class StorageKeys {
 
   static const APP_CONFIG = 'app_config';
   static const USER = 'user';
+  static const TOKEN = 'token';
 }

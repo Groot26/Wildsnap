@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 import 'package:wildsnap/app/data/values/images.dart';
 import 'package:wildsnap/app/data/values/strings.dart';
 import 'package:wildsnap/app/routes/app_pages.dart';
@@ -106,38 +105,42 @@ class EditProfileView extends GetView<EditProfileController> {
                 maxLength: 10,
                 wrapper: controller.phoneWrapper,
                 inputType: TextInputType.phone,
+                readOnly: true,
+                isEnabled: false,
               ),
               SizedBox(height: 12),
               CustomTextField(
                 wrapper: controller.emailWrapper,
                 hintText: Strings.email,
                 inputType: TextInputType.emailAddress,
-              ),
-              SizedBox(height: 12),
-              CustomTextField(
-                suffixIcon: GestureDetector(
-                    onTap: () async {
-                      final date = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(1947),
-                        lastDate: DateTime.now(),
-                      );
-                      controller.dob = date;
-                      if (controller.dob != null) {
-                        controller.dobWrapper.controller.text =
-                            DateFormat('dd/MM/yyyy').format(controller.dob!);
-                      } else {
-                        controller.dobWrapper.controller.text = '';
-                      }
-                    },
-                    child: Icon(Icons.calendar_month)),
-                hintText: Strings.dateOfBirth,
-                wrapper: controller.dobWrapper,
-                inputType: TextInputType.phone,
                 readOnly: true,
+                isEnabled: false,
               ),
               SizedBox(height: 12),
+              // CustomTextField(
+              //   suffixIcon: GestureDetector(
+              //       onTap: () async {
+              //         final date = await showDatePicker(
+              //           context: context,
+              //           initialDate: DateTime.now(),
+              //           firstDate: DateTime(1947),
+              //           lastDate: DateTime.now(),
+              //         );
+              //         controller.dob = date;
+              //         if (controller.dob != null) {
+              //           controller.dobWrapper.controller.text =
+              //               DateFormat('dd/MM/yyyy').format(controller.dob!);
+              //         } else {
+              //           controller.dobWrapper.controller.text = '';
+              //         }
+              //       },
+              //       child: Icon(Icons.calendar_month)),
+              //   hintText: Strings.dateOfBirth,
+              //   wrapper: controller.dobWrapper,
+              //   inputType: TextInputType.phone,
+              //   readOnly: true,
+              // ),
+              // SizedBox(height: 12),
               CustomTextField(
                 wrapper: controller.bioWrapper,
                 hintText: Strings.bio,

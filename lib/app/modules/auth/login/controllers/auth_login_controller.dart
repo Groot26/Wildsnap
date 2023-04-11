@@ -1,4 +1,3 @@
-
 import 'package:get/get.dart';
 import 'package:wildsnap/app/data/repository/user_repository.dart';
 import 'package:wildsnap/app/data/values/strings.dart';
@@ -13,7 +12,6 @@ class AuthLoginController extends BaseController<UserRepository> {
   final emailWrapper = TextFieldWrapper();
   final passWrapper = TextFieldWrapper();
 
-
   //MARK:API Call
   callLoginApi() {
     final service = ApiServices();
@@ -26,22 +24,23 @@ class AuthLoginController extends BaseController<UserRepository> {
     ).then((value) async {
       if (value.error != null) {
         print("get data >>>>>> " + value.error!);
+        //print("get data >>>>>> " + value.message.toString());
         Get.snackbar('Something went Wrong', value.error!);
         passWrapper.errorText = ErrorMessages.incorrectPassword;
       } else {
         print("*********************************************************");
-        await Storage.setUser (value.data);
-        print('---user--- ' + value.data!.userName);
-        print('---Token--- '+ value.token.toString());
+        await Storage.setUser(value.data);
+        await Storage.setToken (value.token);
+        //await Storage.setUser (value.token);
+        print('---Token--- ' + value.token.toString());
+        print('---user--- ' + value.data!.followingCount.toString());
+        print('---user--- ' + value.data!.followersCount.toString());
         DashboardView.launch();
       }
-    }
-    );
+    });
   }
 
-
   sendOTP() async {
-
     String email = emailWrapper.controller.text.trim();
     if (email.isValidEmail()) {
       emailWrapper.errorText = Strings.empty;

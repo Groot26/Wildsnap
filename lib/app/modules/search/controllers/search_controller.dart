@@ -1,20 +1,51 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:wildsnap/utils/helper/text_field_wrapper.dart';
+import 'package:wildsnap/utils/storage/storage_utils.dart';
 
 class SearchController extends GetxController {
-  final count = 0.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
+  final searchWrapper = TextFieldWrapper();
+  RxList<SearchUser> posts = RxList([]);
+
+  Future searchUser(String? query) async {
+    var url = Uri.parse('http://3.109.185.64:3001/api/user?query=$query');
+
+    http.Response response = await http.get(
+      url,
+      headers: {'Authorization': 'Bearer ${Storage.getToken()}'},
+    );
+
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+
+    final data = jsonDecode(response.body);
+     posts.value = List<SearchUser>.from(data.map((dynamic row) => SearchUser.fromJson(row)));
+    
+
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-
-  void increment() => count.value++;
 }
+
+class SearchUser {
+  String name;
+  String image;
+  String userName;
+
+  SearchUser({
+    required this.name,
+    required this.image,
+    required this.userName,
+  });
+
+  factory SearchUser.fromJson(Map<String, dynamic> json) {
+    return SearchUser(
+      name: json['name'],
+      userName: json['username'],
+      image: json['imageUrl'],
+    );
+  }
+}
+
+//List<Post> userList = [];

@@ -5,25 +5,22 @@ class User {
   late final String email;
   late final String dob;
   late final String? bio;
-  late final int followersCount;
-  late final int followingCount;
+  late final String? followersCount;
+  late final String? followingCount;
   late final String id;
-  late final String? token;
   late final String profilePic;
 
-  User({
-    required this.id,
-    required this.name,
-    required this.userName,
-    required this.phone,
-    required this.email,
-    required this.profilePic,
-    required  this.followingCount,
-    required this.followersCount,
-    required this.dob,
-     this.token,
-     this.bio
-  });
+  User(
+      {required this.id,
+      required this.name,
+      required this.userName,
+      required this.phone,
+      required this.email,
+      required this.profilePic,
+       this.followingCount,
+       this.followersCount,
+      required this.dob,
+      this.bio});
 
   User.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -34,9 +31,8 @@ class User {
     profilePic = json['imageUrl'];
     dob = json['dob'];
     bio = json['bio'];
-    token = json['token'];
-    followersCount = json['followers'];
-    followingCount = json['following'];
+    followersCount = json['followers'].toString();
+    followingCount = json['following'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -49,10 +45,6 @@ class User {
     data['imageUrl'] = this.profilePic;
     data['dob'] = this.dob;
     data['bio'] = this.bio;
-    data['token'] = this.token;
-    data['followers'] = this.followersCount;
-    data['following'] = this.followingCount;
     return data;
   }
-
 }

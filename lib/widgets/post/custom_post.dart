@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wildsnap/app/theme/app_colors.dart';
 import '../../app/data/values/images.dart';
 import '../../app/modules/comments/views/comments_view.dart';
+
+_launchMap() async {
+  var url =
+      Uri.parse("https://www.google.com/maps/search/?api=1&query=16.002748,73.688986");
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    await launchUrl(url);
+    //throw 'Could not launch $url';
+  }
+}
 
 class CustomPost extends StatelessWidget {
   final String userName;
@@ -34,12 +46,11 @@ class CustomPost extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              //height: 310,
               width: double.infinity,
               decoration: BoxDecoration(
                 border: Border.all(width: 1, color: AppColors.black),
               ),
-              child: Image.asset(Images.imgSamplePost),
+              child: Image.asset(Images.imgSamplePost, fit: BoxFit.contain),
             ),
             Container(
               height: 90,
@@ -83,11 +94,12 @@ class CustomPost extends StatelessWidget {
                       ],
                     ),
                   ),
-                  CustomIcon(icon: Images.icLocation, onTap: () {}),
+                  CustomIcon(icon: Images.icLocation, onTap: _launchMap),
                   CustomIcon(
                       icon: isLiked ? Images.icLike : Images.icDislike,
                       onTap: onLikeTap),
-                  CustomIcon(icon: Images.icComment, onTap: CommentsView.launch),
+                  CustomIcon(
+                      icon: Images.icComment, onTap: CommentsView.launch),
                 ],
               ),
             ),

@@ -46,10 +46,9 @@ class EditProfileController extends GetxController {
     userNameWrapper.controller.text = profileDetails.userName;
     phoneWrapper.controller.text = profileDetails.phone;
     emailWrapper.controller.text = profileDetails.email;
-    if(profileDetails.bio!=null) {
+    if (profileDetails.bio != null) {
       bioWrapper.controller.text = profileDetails.bio!;
-    }
-    else{
+    } else {
       bioWrapper.controller.text = '';
     }
   }
@@ -59,7 +58,6 @@ class EditProfileController extends GetxController {
     final userName = userNameWrapper.controller.text;
     final phoneNumber = phoneWrapper.controller.text;
     final email = emailWrapper.controller.text;
-
 
     if (name.isValidName()) {
       nameWrapper.errorText = Strings.empty;
@@ -89,38 +87,40 @@ class EditProfileController extends GetxController {
       return;
     }
 
-
-
-    Get.snackbar('Profile Updated', '');
-    print('profile updated');
+    updateUserDetails();
   }
-
 
   Future updateUserDetails() async {
     var url = Uri.parse('http://3.109.185.64:3001/api/user');
     //json mapping user entered details
     Map mapData = {
-      'name': nameWrapper.controller.text,
-      'username': userNameWrapper.controller.text,
-      'phone': phoneWrapper.controller.text,
-      'email': emailWrapper.controller.text,
-      'dob':  dobWrapper.controller.text,
-      'bio':  bioWrapper.controller.text,
+      'name': nameWrapper.controller.text.isEmpty
+          ? null
+          : nameWrapper.controller.text,
+      'username': userNameWrapper.controller.text.isEmpty
+          ? null
+          : userNameWrapper.controller.text,
+      'bio': bioWrapper.controller.text.isEmpty
+          ? null
+          : bioWrapper.controller.text,
     };
 
-    http.Response response = await http.patch(url, body: mapData,);
+    http.Response response = await http.patch(url,
+        body: mapData,
+        headers: {'Authorization': 'Bearer ${Storage.getToken()}'});
 
-    // var data = jsonDecode(response.body);
-    // print("DATA: $data");
-    // //print("statusCode:" + data['statusCode']);
-    //
-    // if(data['token'] == null){
-    //   // Storage.setUser(response.data);
-    //   Get.snackbar('Something went Wrong', data['message']);
-    // }else{
-    //   final user = User.fromJson(data['user']);
-    //   await Storage.setUser(user);
-    // }
+    var data = jsonDecode(response.body);
+    print("DATA: $data");
+    //print("statusCode:" + data['statusCode']);
+
+    if (data['acknowledged'] == true) {
+      //final user = User.fromJson(data['user']);
+      Get.snackbar('Profile Updated', 'Successfully');
+      print('profile updated');
+      //await Storage.setUser(user);
+    } else {
+      // Storage.setUser(response.data);
+      Get.snackbar('Something went Wrong', data['message']);
+    }
   }
-
 }

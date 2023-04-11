@@ -40,6 +40,8 @@ class Strings {
   static const number = 'Mobile Number';
   static const email = 'Email';
   static const location = 'Location';
+  static const lat = 'Enter Latitude';
+  static const long = 'Enter Longitude';
   static const caption = 'Caption';
   static const city = 'City';
   static const termsAndConditions = 'I agree to the Term and condition';
