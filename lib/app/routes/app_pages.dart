@@ -14,6 +14,8 @@ import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/editProfile/bindings/edit_profile_binding.dart';
 import '../modules/editProfile/views/edit_profile_view.dart';
+import '../modules/guestProfile/bindings/guest_profile_binding.dart';
+import '../modules/guestProfile/views/guest_profile_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
@@ -95,6 +97,11 @@ class AppPages {
       name: Routes.DASHBOARD,
       page: () => DashboardView(),
       binding: DashboardBinding(),
+    ),
+    GetPage(
+      name: Routes.GUEST_PROFILE,
+      page: () =>  GuestProfileView(),
+      binding: GuestProfileBinding(),
     ),
   ];
 }

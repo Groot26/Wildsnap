@@ -5,7 +5,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:wildsnap/utils/helper/text_field_wrapper.dart';
 import 'package:http/http.dart' as http;
 import 'package:wildsnap/utils/storage/storage_utils.dart';
-import 'package:dio/dio.dart';
 
 class PostPreviewController extends GetxController {
   final captionWrapper = TextFieldWrapper();
@@ -57,16 +56,26 @@ class PostPreviewController extends GetxController {
   Future uploadImage() async {
     if (imageFile.value != null) {
       var uri = Uri.parse('http://3.109.185.64:3001/api/s3/upload');
-      var request = http.MultipartRequest('POST', uri)
-        ..files.add(
-          await http.MultipartFile.fromPath(
-            'file',
-            imageFile.value!.path,
-            //contentType: MediaType('application', 'x-tar'),
-          ),
-        );
-      print('object');
-      final response = await request.send();
+
+      final response = await http.post(uri,
+          body: imageFile.value!.readAsBytesSync(),
+          headers: {
+            'Authorisation': 'Bearer ${Storage.getToken()}',
+            'Content-Type': 'image/jpg'
+          });
+
+      //http.FormData formData = http.FormData.fromMap(map);
+
+      // var request = http.MultipartRequest('POST', uri)
+      //   ..files.add(
+      //     await http.MultipartFile.fromPath(
+      //       'file',
+      //       imageFile.value!.path,
+      //       //contentType: MediaType('application', 'x-tar'),
+      //     ),
+      //   );
+      print(response.body.toString());
+
       if (response.statusCode == 200) {
         print(response);
       }

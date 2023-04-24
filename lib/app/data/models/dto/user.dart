@@ -5,8 +5,8 @@ class User {
   late final String email;
   late final String dob;
   late final String? bio;
-  late final String? followersCount;
-  late final String? followingCount;
+  late final String followersCount;
+  late final String followingCount;
   late final String id;
   late final String profilePic;
 
@@ -17,8 +17,8 @@ class User {
       required this.phone,
       required this.email,
       required this.profilePic,
-       this.followingCount,
-       this.followersCount,
+      required this.followingCount,
+      required this.followersCount,
       required this.dob,
       this.bio});
 

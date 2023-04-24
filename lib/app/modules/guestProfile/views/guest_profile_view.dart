@@ -1,26 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:wildsnap/app/modules/auth/login/views/auth_login_view.dart';
-import 'package:wildsnap/app/modules/editProfile/views/edit_profile_view.dart';
-import 'package:wildsnap/app/routes/app_pages.dart';
-import 'package:wildsnap/app/theme/app_colors.dart';
-import '../controllers/profile_controller.dart';
 
-class ProfileView extends GetView<ProfileController> {
-  static launch() => Get.toNamed(Routes.PROFILE);
+import 'package:get/get.dart';
+
+import '../../../routes/app_pages.dart';
+import '../../../theme/app_colors.dart';
+import '../controllers/guest_profile_controller.dart';
+
+class GuestProfileView extends GetView<GuestProfileController> {
+  static launch() => Get.toNamed(Routes.GUEST_PROFILE);
 
   final List<String> imageUrls = [
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
     'assets/images/img_sample_post.png',
     'assets/images/img_sample_post.png',
     'assets/images/img_sample_post.png',
@@ -29,6 +18,17 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+        iconTheme: IconThemeData(color: AppColors.black),
+        elevation: 0,
+        backgroundColor: AppColors.white,
+        centerTitle: true,
+        // title: Text(
+        //   'New Post',
+        //   style: TextStyle(color: AppColors.black),
+        // ),
+      ),
       body: Column(
         children: <Widget>[
           Row(
@@ -87,22 +87,28 @@ class ProfileView extends GetView<ProfileController> {
                     //     color: AppColors.grey,
                     //   ),
                     // ),
-                    Row(
-                      children: [
-                        ElevatedButton(
-                          child: Text('Edit Profile'),
-                          onPressed: EditProfileView.launch,
+                    // Row(
+                    //   children: [
+                    //     ElevatedButton(
+                    //       child: Text('Edit Profile'),
+                    //       onPressed: EditProfileView.launch,
+                    //     ),
+                    //     SizedBox(width: 8),
+                    //     ElevatedButton(
+                    //       child: Text('Sign Out'),
+                    //       onPressed: () async {
+                    //         await controller.signOut();
+                    //         AuthLoginView.launch();
+                    //       },
+                    //     ),
+                    //   ],
+                    // ),
+                        Center(
+                          child: ElevatedButton(
+                            child: Text('Follow'),
+                            onPressed: (){},
+                          ),
                         ),
-                        SizedBox(width: 8),
-                        ElevatedButton(
-                          child: Text('Sign Out'),
-                          onPressed: () async {
-                            await controller.signOut();
-                            AuthLoginView.launch();
-                          },
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ),
@@ -142,7 +148,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                     '0',
+                    '0',
                     //controller.profileDetails.followersCount.toString(),
                     style: TextStyle(
                       fontSize: 16,

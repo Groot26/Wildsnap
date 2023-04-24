@@ -119,7 +119,7 @@ class AuthSignupController extends GetxController {
       final user = User.fromJson(data['user']);
       print('-----------saving----------');
       await Storage.setUser(user);
-      //await Storage.setUser(token);
+      await Storage.setToken (data["token"]);
       LoadingUtils.hideLoader();
       DashboardView.launch();
     }

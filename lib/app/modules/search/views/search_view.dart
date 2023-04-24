@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wildsnap/app/data/values/images.dart';
+import 'package:wildsnap/app/modules/guestProfile/views/guest_profile_view.dart';
 import 'package:wildsnap/app/routes/app_pages.dart';
 import '../controllers/search_controller.dart';
 
@@ -84,10 +84,12 @@ class SearchResultTile extends StatelessWidget {
         //     : null,
         title: Text(title),
         subtitle: Text(subtitle),
-        onTap: () {
+        onTap:
           // Perform action when tile is tapped
-          print('Tile tapped: $title');
-        },
+          GuestProfileView.launch
+          //print("guest view");
+          //print('Tile tapped: $title');
+
       ),
     );
   }
