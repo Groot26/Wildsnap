@@ -58,6 +58,8 @@ class GuestProfileView extends GetView<GuestProfileController> {
                       guestUserData.name,
                       style: TextStyle(
                         fontSize: 18,
+                        height: 2,
+                        fontWeight: FontWeight.w600,
                         color: AppColors.black,
                       ),
                     ),
@@ -66,10 +68,12 @@ class GuestProfileView extends GetView<GuestProfileController> {
                           "\n" +
                           guestUserData.email +
                           "\n" +
-                          guestUserData.dob,
+                          guestUserData.dob +
+                          "\n" +
+                          guestUserData.bio!,
                       style: TextStyle(
                         fontSize: 16,
-                        color: AppColors.grey,
+                        color: AppColors.darkGrey,
                       ),
                     ),
                     Center(

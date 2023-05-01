@@ -49,6 +49,8 @@ class ProfileView extends GetView<ProfileController> {
                       controller.profileDetails.name,
                       style: TextStyle(
                         fontSize: 18,
+                        height: 2,
+                        fontWeight: FontWeight.w600,
                         color: AppColors.black,
                       ),
                     ),
@@ -57,10 +59,12 @@ class ProfileView extends GetView<ProfileController> {
                           "\n" +
                           controller.profileDetails.email +
                           "\n" +
-                          controller.profileDetails.dob,
+                          controller.profileDetails.dob +
+                          "\n" +
+                          controller.profileDetails.bio!,
                       style: TextStyle(
                         fontSize: 16,
-                        color: AppColors.grey,
+                        color: AppColors.darkGrey,
                       ),
                     ),
                     //if(controller.profileDetails.bio==null)
@@ -106,11 +110,13 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                   ),
                   SizedBox(height: 5),
-                  Text(
-                    controller.postsDash.value.length.toString(),
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.grey,
+                  Obx(
+                      ()=> Text(
+                      controller.postsDash.value.length.toString(),
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: AppColors.grey,
+                      ),
                     ),
                   ),
                 ],

@@ -35,12 +35,14 @@ class SearchUser {
   int followers;
   int following;
   String dob;
+  String? bio;
 
   SearchUser({
     required this.name,
     required this.image,
     required this.userName,
     required this.dob,
+     this.bio,
     required this.id,
     required this.email,
     required this.phone,
@@ -56,6 +58,7 @@ class SearchUser {
       image: json['imageUrl'],
       email: json['email'],
       dob: json['dob'],
+      bio: json['bio'],
       phone: json['phone'],
       followers: json['followers'],
       following: json['following'],
