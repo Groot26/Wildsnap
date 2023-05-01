@@ -31,7 +31,7 @@ class EditProfileView extends GetView<EditProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key:scaffoldKey,
+      key: scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
@@ -63,22 +63,23 @@ class EditProfileView extends GetView<EditProfileController> {
                 child: Column(
                   children: [
                     Obx(
-                    ()=> imageFile.value == null ? Image.network(
-                      controller.profileDetails.profilePic,
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.contain,
-                      ):ClipRRect(
-                      borderRadius: BorderRadius.circular(300),
-                      child: Image.file(
-                        imageFile.value!,
-                        height: 100,
-                        width: 100,
-                        fit: BoxFit.cover,
-                      ),
+                      () => imageFile.value == null
+                          ? CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                controller.profileDetails.profilePic,
+                              ),
+                              radius: 74,
+                            )
+                          : ClipRRect(
+                              borderRadius: BorderRadius.circular(300),
+                              child: Image.file(
+                                imageFile.value!,
+                                height: 150,
+                                width: 150,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                     ),
-                    ),
-
                     SizedBox(height: 16.0),
                     ElevatedButton(
                       onPressed: () => getImage(ImageSource.gallery),
@@ -98,6 +99,8 @@ class EditProfileView extends GetView<EditProfileController> {
                 inputType: TextInputType.name,
                 hintText: Strings.userName,
                 wrapper: controller.userNameWrapper,
+                readOnly: true,
+                isEnabled: false,
               ),
               SizedBox(height: 12),
               CustomTextField(
@@ -149,8 +152,8 @@ class EditProfileView extends GetView<EditProfileController> {
               SizedBox(height: 16.0),
               Center(
                 child: ElevatedButton(
-                  onPressed: ()  {
-                     controller.updateProfile();
+                  onPressed: () {
+                    controller.updateProfile();
                   },
                   child: Text('Save Changes'),
                 ),

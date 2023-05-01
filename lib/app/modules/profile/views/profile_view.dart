@@ -27,7 +27,7 @@ class ProfileView extends GetView<ProfileController> {
                       backgroundImage: NetworkImage(
                         controller.profileDetails.profilePic,
                       ),
-                      radius: 66,
+                      radius: 60,
                     ),
                   ),
                   Text(
@@ -126,8 +126,8 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '0',
-                    //controller.profileDetails.followersCount.toString(),
+                    //'0',
+                    controller.profileDetails.followersCount.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,
@@ -146,8 +146,8 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '0',
-                    //controller.profileDetails.followingCount.toString(),
+                    //'0',
+                    controller.profileDetails.followingCount.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,
@@ -178,28 +178,26 @@ class PhotoGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 2),
-        child: Obx(
-          () => GridView.builder(
-            scrollDirection: Axis.vertical,
-            // shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 2.0,
-              mainAxisSpacing: 2.0,
-            ),
-            itemCount: post.length,
-            itemBuilder: (BuildContext context, int index) {
-              return InkWell(
-                onTap: () {},
-                child: Image.network(
-                  post[index].imageUrl,
-                  fit: BoxFit.contain,
-                ),
-              );
-            },
+      child: Obx(
+        () => GridView.builder(
+          scrollDirection: Axis.vertical,
+          // shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            childAspectRatio: 0.9,
+            crossAxisCount: 3,
+            crossAxisSpacing: 2,
+            mainAxisSpacing: 6,
           ),
+          itemCount: post.length,
+          itemBuilder: (BuildContext context, int index) {
+            return InkWell(
+              onTap: () {},
+              child: Image.network(
+                post[index].imageUrl,
+                fit: BoxFit.contain,
+              ),
+            );
+          },
         ),
       ),
     );

@@ -74,8 +74,8 @@ class GuestProfileView extends GetView<GuestProfileController> {
                     ),
                     Center(
                       child: ElevatedButton(
-                        child: Text('Follow'),
-                        onPressed: () {},
+                        child: Text('Follow/Unfollow'),
+                        onPressed: controller.followUnfollow,
                       ),
                     ),
                   ],
@@ -117,8 +117,8 @@ class GuestProfileView extends GetView<GuestProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '0',
-                    //guestUserData.followersCount.toString(),
+                    //'0',
+                    guestUserData.followers.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,
@@ -137,8 +137,8 @@ class GuestProfileView extends GetView<GuestProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '0',
-                    //guestUserData.followingCount.toString(),
+                    //'0',
+                    guestUserData.following.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,
@@ -169,28 +169,26 @@ class PhotoGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 2),
-        child: Obx(
-          () => GridView.builder(
-            scrollDirection: Axis.vertical,
-            // shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 2.0,
-              mainAxisSpacing: 2.0,
-            ),
-            itemCount: post.length,
-            itemBuilder: (BuildContext context, int index) {
-              return InkWell(
-                onTap: () {},
-                child: Image.network(
-                  post[index].imageUrl,
-                  fit: BoxFit.contain,
-                ),
-              );
-            },
+      child: Obx(
+        () => GridView.builder(
+          scrollDirection: Axis.vertical,
+          // shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            childAspectRatio: 0.9,
+            crossAxisSpacing: 2.0,
+            mainAxisSpacing: 2.0,
           ),
+          itemCount: post.length,
+          itemBuilder: (BuildContext context, int index) {
+            return InkWell(
+              onTap: () {},
+              child: Image.network(
+                post[index].imageUrl,
+                fit: BoxFit.contain,
+              ),
+            );
+          },
         ),
       ),
     );

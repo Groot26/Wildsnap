@@ -18,17 +18,21 @@ class SearchView extends GetView<SearchController> {
           children: [
             SearchBar(),
             Obx(
-              ()=> ListView.builder(
+              () => ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: controller.posts.length,
                 itemBuilder: (context, index) {
-                return SearchResultTile(
-                  title: controller.posts[index].name,
-                  subtitle:  controller.posts[index].userName,
-                  imageUrl: controller.posts[index].image, onTap: () { GuestProfileView.launch(index); },
-                );
-              },),
+                  return SearchResultTile(
+                    title: controller.posts[index].name,
+                    subtitle: controller.posts[index].userName,
+                    imageUrl: controller.posts[index].image,
+                    onTap: () {
+                      GuestProfileView.launch(index);
+                    },
+                  );
+                },
+              ),
             )
           ],
         ),
@@ -39,7 +43,8 @@ class SearchView extends GetView<SearchController> {
 
 //Search bar
 class SearchBar extends StatelessWidget {
-final controller = Get.find<SearchController>();
+  final controller = Get.find<SearchController>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,7 +54,7 @@ final controller = Get.find<SearchController>();
         onChanged: (value) async {
           String query = controller.searchWrapper.controller.text;
           print('Search query: $query');
-         await controller.searchUser(query);
+          await controller.searchUser(query);
         },
         decoration: InputDecoration(
           hintText: 'Search...',
@@ -78,19 +83,17 @@ class SearchResultTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: Image.network(imageUrl),
-        // leading: imageUrl.isNotEmpty
-        //     ? CircleAvatar(
-        //         backgroundImage: AssetImage(imageUrl) //Images.imgSample
-        //         )
-        //     : null,
-        title: Text(title),
-        subtitle: Text(subtitle),
-        onTap: onTap
+          leading: CircleAvatar(
+            backgroundImage: NetworkImage(imageUrl),
+            radius: 28,
+          ),
+          title: Text(title),
+          subtitle: Text(subtitle),
+          onTap: onTap
           //print("guest view");
           //print('Tile tapped: $title');
 
-      ),
+          ),
     );
   }
 }

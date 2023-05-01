@@ -55,10 +55,15 @@ class CustomPost extends StatelessWidget {
           children: [
             Container(
                 width: double.infinity,
+
                 decoration: BoxDecoration(
                   border: Border.all(width: 1, color: AppColors.black),
                 ),
-                child: Image.network(imageUrl, fit: BoxFit.contain)),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.contain,
+                )
+            ),
             Container(
               height: 90,
               width: double.infinity,

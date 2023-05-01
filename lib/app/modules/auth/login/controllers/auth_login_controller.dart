@@ -31,10 +31,9 @@ class AuthLoginController extends BaseController<UserRepository> {
         print("*********************************************************");
         await Storage.setUser(value.data);
         await Storage.setToken (value.token);
-        //await Storage.setUser (value.token);
         print('---Token--- ' + value.token.toString());
-        print('---user--- ' + value.data!.followingCount.toString());
-        print('---user--- ' + value.data!.followersCount.toString());
+        //print('---Following--- ' + value.data!.followingCount.toString());
+        //print('---Followers--- ' + value.data!.followersCount.toString());
         DashboardView.launch();
       }
     });

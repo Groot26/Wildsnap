@@ -86,7 +86,6 @@ class EditProfileController extends GetxController {
       emailWrapper.errorText = ErrorMessages.invalidEmail;
       return;
     }
-
     updateUserDetails();
   }
 
@@ -97,9 +96,9 @@ class EditProfileController extends GetxController {
       'name': nameWrapper.controller.text.isEmpty
           ? null
           : nameWrapper.controller.text,
-      'username': userNameWrapper.controller.text.isEmpty
+      'phone': phoneWrapper.controller.text.isEmpty
           ? null
-          : userNameWrapper.controller.text,
+          : phoneWrapper.controller.text,
       'bio': bioWrapper.controller.text.isEmpty
           ? null
           : bioWrapper.controller.text,
@@ -111,7 +110,7 @@ class EditProfileController extends GetxController {
 
     var data = jsonDecode(response.body);
     print("DATA: $data");
-    //print("statusCode:" + data['statusCode']);
+    //print("user" + data['user']);
 
     if (data['acknowledged'] == true) {
       //final user = User.fromJson(data['user']);

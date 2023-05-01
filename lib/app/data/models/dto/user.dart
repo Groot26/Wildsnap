@@ -29,10 +29,10 @@ class User {
     email = json['email'];
     id = json['id'];
     profilePic = json['imageUrl'];
-    dob = json['dob'];
     bio = json['bio'];
-    followersCount = json['followers'].toString();
+    followersCount = json['followers'].toString() ;
     followingCount = json['following'].toString();
+    dob = json['dob'];
   }
 
   Map<String, dynamic> toJson() {

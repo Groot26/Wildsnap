@@ -60,4 +60,22 @@ class GuestProfileController extends GetxController {
     LoadingUtils.hideLoader();
   }
 
+  Future followUnfollow() async {
+
+    final guestUserid = searchController.posts[Get.arguments['index']].id;
+    print(guestUserid);
+    var url = Uri.parse('http://3.109.185.64:3001/api/user/$guestUserid/follow-unfollow');
+
+    http.Response response = await http.post(
+      url,
+      headers: {'Authorization': 'Bearer ${Storage.getToken()}'},
+    );
+
+    print('Response status: ${response.statusCode}');
+    if(response.statusCode==201)
+      Get.snackbar('Follow Unfollow ','Successful');
+    else
+      Get.snackbar('Something went Wrong', '');
+  }
+
 }
