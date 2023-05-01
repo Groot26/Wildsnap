@@ -11,56 +11,47 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            //todo story
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(vertical: 8),
-            //   child: SingleChildScrollView(
-            //     scrollDirection: Axis.horizontal,
-            //     child: Row(
-            //       mainAxisAlignment: MainAxisAlignment.start,
-            //       children: [
-            //       Story(),
-            //       ],
-            //     ),
-            //   ),
-            // ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  children: [
-                    Obx(
-                      () => CustomPost(
-                        userName: 'name',
-                        description: 'description\ndesc\nnew',
-                        isLiked: controller.isLiked.value,
-                        onLikeTap: () {
-                          controller.isLiked.value = !controller.isLiked.value;
-                        },
-                      ),
-                    ),
-                    Obx(
-                      () => CustomPost(
-                        userName: 'newUser',
-                        description: 'Null',
-                        isLiked: controller.isLiked2.value,
-                        onLikeTap: () {
-                          controller.isLiked2.value =
-                              !controller.isLiked2.value;
-                        },
-                      ),
-                    ),
-                  ],
+      body: Column(
+        children: [
+          //todo story
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(vertical: 8),
+          //   child: SingleChildScrollView(
+          //     scrollDirection: Axis.horizontal,
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.start,
+          //       children: [
+          //       Story(),
+          //       ],
+          //     ),
+          //   ),
+          // ),
+          Expanded(
+            child: Obx(
+              () => Padding(
+                padding: const EdgeInsets.fromLTRB(16,16,16,0),
+                child: ListView.separated(
+                  separatorBuilder: (context, index) => SizedBox(
+                    height: 10,
+                  ),
+                  itemCount: controller.postsDash.value.length,
+                  itemBuilder: (context, index) {
+                    final currentPost = controller.postsDash[index];
+                    final currentUser = controller.postsDash[index].user!;
+                    return CustomPost(
+                      profilePic: currentUser.profilePic ,
+                      userName: currentUser.userName,
+                      description: currentPost.caption,
+                      imageUrl: currentPost.imageUrl,
+                      lat: currentPost.location.lat,
+                      lng: currentPost.location.lng,
+                    );
+                  },
                 ),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

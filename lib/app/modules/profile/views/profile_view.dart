@@ -4,27 +4,11 @@ import 'package:wildsnap/app/modules/auth/login/views/auth_login_view.dart';
 import 'package:wildsnap/app/modules/editProfile/views/edit_profile_view.dart';
 import 'package:wildsnap/app/routes/app_pages.dart';
 import 'package:wildsnap/app/theme/app_colors.dart';
+import '../../home/controllers/home_controller.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   static launch() => Get.toNamed(Routes.PROFILE);
-
-  final List<String> imageUrls = [
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +107,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    imageUrls.length.toString(),
+                    controller.postsDash.value.length.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,
@@ -142,7 +126,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                     '0',
+                    '0',
                     //controller.profileDetails.followersCount.toString(),
                     style: TextStyle(
                       fontSize: 16,
@@ -176,7 +160,7 @@ class ProfileView extends GetView<ProfileController> {
           SizedBox(height: 20),
           Divider(thickness: 5, height: 5),
           PhotoGridView(
-            imageUrls: imageUrls,
+            post: controller.postsDash,
           ),
         ],
       ),
@@ -185,37 +169,37 @@ class ProfileView extends GetView<ProfileController> {
 }
 
 class PhotoGridView extends StatelessWidget {
-  final List<String> imageUrls;
+  final RxList<Post> post;
 
   //final Function? onImageTap;
 
-  PhotoGridView({required this.imageUrls});
+  PhotoGridView({required this.post});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 2),
-        child: GridView.builder(
-          scrollDirection: Axis.vertical,
-          // shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 2.0,
-            mainAxisSpacing: 2.0,
+        child: Obx(
+          () => GridView.builder(
+            scrollDirection: Axis.vertical,
+            // shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 2.0,
+              mainAxisSpacing: 2.0,
+            ),
+            itemCount: post.length,
+            itemBuilder: (BuildContext context, int index) {
+              return InkWell(
+                onTap: () {},
+                child: Image.network(
+                  post[index].imageUrl,
+                  fit: BoxFit.contain,
+                ),
+              );
+            },
           ),
-          itemCount: imageUrls.length,
-          itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-              onTap: () {
-                print("hi " + imageUrls[index]);
-              },
-              child: Image.asset(
-                imageUrls[index],
-                fit: BoxFit.contain,
-              ),
-            );
-          },
         ),
       ),
     );

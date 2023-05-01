@@ -106,8 +106,8 @@ class Post {
 }
 
 class Location {
-  String lat;
-  String lng;
+  late final String lat;
+  late final String lng;
 
   Location({
     required this.lat,
@@ -119,5 +119,9 @@ class Location {
     data['lat'] = this.lat;
     data['lng'] = this.lng;
     return data;
+  }
+  Location.fromJson(Map<String, dynamic> json) {
+    lat = json['lat'];
+    lng = json['lng'];
   }
 }

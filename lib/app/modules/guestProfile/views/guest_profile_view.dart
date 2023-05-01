@@ -4,30 +4,23 @@ import 'package:get/get.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../theme/app_colors.dart';
+import '../../home/controllers/home_controller.dart';
 import '../controllers/guest_profile_controller.dart';
 
 class GuestProfileView extends GetView<GuestProfileController> {
-  static launch() => Get.toNamed(Routes.GUEST_PROFILE);
-
-  final List<String> imageUrls = [
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-    'assets/images/img_sample_post.png',
-  ];
+  static launch(int index) =>
+      Get.toNamed(Routes.GUEST_PROFILE, arguments: {"index": index});
 
   @override
   Widget build(BuildContext context) {
+    final guestUserData =
+        controller.searchController.posts[Get.arguments['index']];
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
         iconTheme: IconThemeData(color: AppColors.black),
         elevation: 0,
         backgroundColor: AppColors.white,
-        centerTitle: true,
-        // title: Text(
-        //   'New Post',
-        //   style: TextStyle(color: AppColors.black),
-        // ),
       ),
       body: Column(
         children: <Widget>[
@@ -41,13 +34,13 @@ class GuestProfileView extends GetView<GuestProfileController> {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: CircleAvatar(
                       backgroundImage: NetworkImage(
-                        controller.profileDetails.profilePic,
+                        guestUserData.image,
                       ),
                       radius: 66,
                     ),
                   ),
                   Text(
-                    controller.profileDetails.userName,
+                    guestUserData.userName,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 18,
@@ -62,53 +55,29 @@ class GuestProfileView extends GetView<GuestProfileController> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      controller.profileDetails.name,
+                      guestUserData.name,
                       style: TextStyle(
                         fontSize: 18,
                         color: AppColors.black,
                       ),
                     ),
                     Text(
-                      controller.profileDetails.phone +
+                      guestUserData.phone +
                           "\n" +
-                          controller.profileDetails.email +
+                          guestUserData.email +
                           "\n" +
-                          controller.profileDetails.dob,
+                          guestUserData.dob,
                       style: TextStyle(
                         fontSize: 16,
                         color: AppColors.grey,
                       ),
                     ),
-                    //if(controller.profileDetails.bio==null)
-                    // Text(
-                    //   controller.profileDetails.bio!,
-                    //   style: TextStyle(
-                    //     fontSize: 16,
-                    //     color: AppColors.grey,
-                    //   ),
-                    // ),
-                    // Row(
-                    //   children: [
-                    //     ElevatedButton(
-                    //       child: Text('Edit Profile'),
-                    //       onPressed: EditProfileView.launch,
-                    //     ),
-                    //     SizedBox(width: 8),
-                    //     ElevatedButton(
-                    //       child: Text('Sign Out'),
-                    //       onPressed: () async {
-                    //         await controller.signOut();
-                    //         AuthLoginView.launch();
-                    //       },
-                    //     ),
-                    //   ],
-                    // ),
-                        Center(
-                          child: ElevatedButton(
-                            child: Text('Follow'),
-                            onPressed: (){},
-                          ),
-                        ),
+                    Center(
+                      child: ElevatedButton(
+                        child: Text('Follow'),
+                        onPressed: () {},
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -129,7 +98,7 @@ class GuestProfileView extends GetView<GuestProfileController> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    imageUrls.length.toString(),
+                    controller.postsDash.value.length.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,
@@ -149,7 +118,7 @@ class GuestProfileView extends GetView<GuestProfileController> {
                   SizedBox(height: 5),
                   Text(
                     '0',
-                    //controller.profileDetails.followersCount.toString(),
+                    //guestUserData.followersCount.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,
@@ -169,7 +138,7 @@ class GuestProfileView extends GetView<GuestProfileController> {
                   SizedBox(height: 5),
                   Text(
                     '0',
-                    //controller.profileDetails.followingCount.toString(),
+                    //guestUserData.followingCount.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.grey,
@@ -182,7 +151,7 @@ class GuestProfileView extends GetView<GuestProfileController> {
           SizedBox(height: 20),
           Divider(thickness: 5, height: 5),
           PhotoGridView(
-            imageUrls: imageUrls,
+            post: controller.postsDash,
           ),
         ],
       ),
@@ -191,37 +160,37 @@ class GuestProfileView extends GetView<GuestProfileController> {
 }
 
 class PhotoGridView extends StatelessWidget {
-  final List<String> imageUrls;
+  final RxList<Post> post;
 
   //final Function? onImageTap;
 
-  PhotoGridView({required this.imageUrls});
+  PhotoGridView({required this.post});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 2),
-        child: GridView.builder(
-          scrollDirection: Axis.vertical,
-          // shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 2.0,
-            mainAxisSpacing: 2.0,
+        child: Obx(
+          () => GridView.builder(
+            scrollDirection: Axis.vertical,
+            // shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 2.0,
+              mainAxisSpacing: 2.0,
+            ),
+            itemCount: post.length,
+            itemBuilder: (BuildContext context, int index) {
+              return InkWell(
+                onTap: () {},
+                child: Image.network(
+                  post[index].imageUrl,
+                  fit: BoxFit.contain,
+                ),
+              );
+            },
           ),
-          itemCount: imageUrls.length,
-          itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-              onTap: () {
-                print("hi " + imageUrls[index]);
-              },
-              child: Image.asset(
-                imageUrls[index],
-                fit: BoxFit.contain,
-              ),
-            );
-          },
         ),
       ),
     );

@@ -26,7 +26,7 @@ class SearchView extends GetView<SearchController> {
                 return SearchResultTile(
                   title: controller.posts[index].name,
                   subtitle:  controller.posts[index].userName,
-                  imageUrl: controller.posts[index].image,
+                  imageUrl: controller.posts[index].image, onTap: () { GuestProfileView.launch(index); },
                 );
               },),
             )
@@ -64,12 +64,14 @@ class SearchResultTile extends StatelessWidget {
   final String title;
   final String subtitle;
   final String imageUrl;
+  final VoidCallback onTap;
 
   const SearchResultTile({
     Key? key,
     required this.title,
     required this.subtitle,
     required this.imageUrl,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -84,9 +86,7 @@ class SearchResultTile extends StatelessWidget {
         //     : null,
         title: Text(title),
         subtitle: Text(subtitle),
-        onTap:
-          // Perform action when tile is tapped
-          GuestProfileView.launch
+        onTap: onTap
           //print("guest view");
           //print('Tile tapped: $title');
 

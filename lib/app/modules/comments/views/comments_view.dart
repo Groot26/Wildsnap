@@ -1,41 +1,22 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:wildsnap/app/data/values/images.dart';
 import 'package:wildsnap/app/routes/app_pages.dart';
 import 'package:wildsnap/app/theme/app_colors.dart';
-
 import '../controllers/comments_controller.dart';
 
 class CommentsView extends GetView<CommentsController> {
   static launch() => Get.toNamed(Routes.COMMENTS);
 
   final List<String> comments = [
-    'comment 111111111',
-    'comment 2',
-    'comment 3',
-    'comment 1',
-    'comment 2',
-    'comment 3',
-    'comment 1',
-    'comment 2',
-    'comment 3',
-    'comment 1',
-    'comment 2',
-    'comment 3',
-    'comment 1',
-    'comment 2',
-    'comment 3',
-    'comment 1',
-    'comment 2',
-    'comment 3',
+    'comment preview',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CommentsView',style: TextStyle(color: AppColors.primaryColor),),
+        title: const Text('Comments',style: TextStyle(color: AppColors.primaryColor),),
         centerTitle: true,
         elevation: 0,
         backgroundColor: AppColors.white,

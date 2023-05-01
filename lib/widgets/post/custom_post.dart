@@ -5,9 +5,9 @@ import 'package:wildsnap/app/theme/app_colors.dart';
 import '../../app/data/values/images.dart';
 import '../../app/modules/comments/views/comments_view.dart';
 
-_launchMap() async {
+_launchMap(String lat, String lng) async {
   var url =
-      Uri.parse("https://www.google.com/maps/search/?api=1&query=16.002748,73.688986");
+      Uri.parse("https://www.google.com/maps/search/?api=1&query=$lat,$lng");
   if (await canLaunchUrl(url)) {
     await launchUrl(url);
   } else {
@@ -19,17 +19,25 @@ _launchMap() async {
 class CustomPost extends StatelessWidget {
   final String userName;
   final String description;
-  final bool isLiked;
-  final VoidCallback onLikeTap;
+  final String lat;
+  final String lng;
+
+  // final bool isLiked;
+  // final VoidCallback onLikeTap;
+  final String imageUrl;
+  final String profilePic;
 
   //todo: final AssetImage profileImg;
 
   CustomPost({
     required this.userName,
     required this.description,
-    required this.isLiked,
-    required this.onLikeTap,
-    //todo: image location
+    required this.lat,
+    required this.lng,
+    // required this.isLiked,
+    // required this.onLikeTap,
+    required this.imageUrl,
+    required this.profilePic,
   });
 
   @override
@@ -46,12 +54,11 @@ class CustomPost extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                border: Border.all(width: 1, color: AppColors.black),
-              ),
-              child: Image.asset(Images.imgSamplePost, fit: BoxFit.contain),
-            ),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: AppColors.black),
+                ),
+                child: Image.network(imageUrl, fit: BoxFit.contain)),
             Container(
               height: 90,
               width: double.infinity,
@@ -69,11 +76,8 @@ class CustomPost extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8),
-                    child: Image.asset(
-                      Images.imgSample,
-                      width: 40,
-                      height: 40,
-                    ),
+                    child: CircleAvatar(
+                        backgroundImage: NetworkImage(profilePic), radius: 24),
                   ),
                   Expanded(
                     child: Column(
@@ -94,10 +98,13 @@ class CustomPost extends StatelessWidget {
                       ],
                     ),
                   ),
-                  CustomIcon(icon: Images.icLocation, onTap: _launchMap),
                   CustomIcon(
-                      icon: isLiked ? Images.icLike : Images.icDislike,
-                      onTap: onLikeTap),
+                      icon: Images.icLocation,
+                      onTap: () => _launchMap(lat, lng)),
+                  CustomIcon(icon: Images.icDislike, onTap: () {}
+                      // icon: isLiked ? Images.icLike : Images.icDislike,
+                      // onTap: onLikeTap
+                      ),
                   CustomIcon(
                       icon: Images.icComment, onTap: CommentsView.launch),
                 ],
