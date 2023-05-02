@@ -93,17 +93,17 @@ class PostPreviewView extends GetView<PostPreviewController> {
                     wrapper: controller.longWrapper,
                   ),
                   ElevatedButton(
-                      onPressed: () async {
-                        await controller.uploadImage();
-                        print('2');
-                        // await controller.post(Post(
-                        //   caption: controller.captionWrapper.controller.text,
-                        //   image: 'https://imgtr.ee/images/2023/03/30/UlyXX.png',
-                        //   location: Location(
-                        //       lat: controller.latWrapper.controller.text,
-                        //       lng: controller.longWrapper.controller.text),
-                        // ));
-                      },
+                      onPressed: Get.back,
+                      //     () async {
+                      //   await controller.uploadImage();
+                      //   // await controller.post(Post(
+                      //   //   caption: controller.captionWrapper.controller.text,
+                      //   //   image: 'https://imgtr.ee/images/2023/03/30/UlyXX.png',
+                      //   //   location: Location(
+                      //   //       lat: controller.latWrapper.controller.text,
+                      //   //       lng: controller.longWrapper.controller.text),
+                      //   // ));
+                      // },
                       child: Text('post')),
                 ],
               ),

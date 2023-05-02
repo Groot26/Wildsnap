@@ -68,14 +68,21 @@ class GuestProfileView extends GetView<GuestProfileController> {
                           "\n" +
                           guestUserData.email +
                           "\n" +
-                          guestUserData.dob +
-                          "\n" +
-                          guestUserData.bio!,
+                          guestUserData.dob,
                       style: TextStyle(
                         fontSize: 16,
                         color: AppColors.darkGrey,
                       ),
                     ),
+                    guestUserData.bio != null
+                        ? Text(
+                            guestUserData.bio!,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: AppColors.darkGrey,
+                            ),
+                          )
+                        : Container(),
                     Center(
                       child: ElevatedButton(
                         child: Text('Follow/Unfollow'),
@@ -101,11 +108,13 @@ class GuestProfileView extends GetView<GuestProfileController> {
                     ),
                   ),
                   SizedBox(height: 5),
-                  Text(
-                    controller.postsDash.value.length.toString(),
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.grey,
+                  Obx(
+                    () => Text(
+                      controller.postsDash.value.length.toString(),
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: AppColors.grey,
+                      ),
                     ),
                   ),
                 ],

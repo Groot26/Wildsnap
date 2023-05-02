@@ -106,12 +106,13 @@ class CustomPost extends StatelessWidget {
                   CustomIcon(
                       icon: Images.icLocation,
                       onTap: () => _launchMap(lat, lng)),
-                  CustomIcon(icon: Images.icDislike, onTap: () {}
-                      // icon: isLiked ? Images.icLike : Images.icDislike,
-                      // onTap: onLikeTap
-                      ),
-                  CustomIcon(
-                      icon: Images.icComment, onTap: CommentsView.launch),
+                  SizedBox(width: 20,)
+                  // CustomIcon(icon: Images.icDislike, onTap: () {}
+                  //     // icon: isLiked ? Images.icLike : Images.icDislike,
+                  //     // onTap: onLikeTap
+                  //     ),
+                  // CustomIcon(
+                  //     icon: Images.icComment, onTap: CommentsView.launch),
                 ],
               ),
             ),

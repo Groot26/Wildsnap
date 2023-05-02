@@ -59,22 +59,21 @@ class ProfileView extends GetView<ProfileController> {
                           "\n" +
                           controller.profileDetails.email +
                           "\n" +
-                          controller.profileDetails.dob +
-                          "\n" +
-                          controller.profileDetails.bio!,
+                          controller.profileDetails.dob,
                       style: TextStyle(
                         fontSize: 16,
                         color: AppColors.darkGrey,
                       ),
                     ),
-                    //if(controller.profileDetails.bio==null)
-                    // Text(
-                    //   controller.profileDetails.bio!,
-                    //   style: TextStyle(
-                    //     fontSize: 16,
-                    //     color: AppColors.grey,
-                    //   ),
-                    // ),
+                    controller.profileDetails.bio != null
+                        ? Text(
+                      controller.profileDetails.bio!,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: AppColors.darkGrey,
+                      ),
+                    )
+                        : Container(),
                     Row(
                       children: [
                         ElevatedButton(
