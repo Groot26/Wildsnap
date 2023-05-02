@@ -12,8 +12,10 @@ class CustomTextField extends StatelessWidget {
   final bool isEnabled;
   final Widget? suffixIcon;
   final bool readOnly;
+  final bool? obscureText;
 
   CustomTextField({
+     this.obscureText=false,
     required this.wrapper,
     required this.hintText,
     this.maxLength,
@@ -27,6 +29,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => TextField(
+        obscureText:obscureText!,
         controller: wrapper.controller,
         style: Styles.tsPrimaryColorRegular18,
         maxLength: maxLength,

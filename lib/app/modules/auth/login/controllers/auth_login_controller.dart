@@ -39,7 +39,7 @@ class AuthLoginController extends BaseController<UserRepository> {
     });
   }
 
-  sendOTP() async {
+  validityCheck() async {
     String email = emailWrapper.controller.text.trim();
     if (email.isValidEmail()) {
       emailWrapper.errorText = Strings.empty;
@@ -55,4 +55,6 @@ class AuthLoginController extends BaseController<UserRepository> {
 
     callLoginApi();
   }
+
+
 }

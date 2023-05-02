@@ -15,7 +15,7 @@ class PrimaryFilledButton extends StatelessWidget {
       onPressed: onTap,
       color: AppColors.primaryColor,
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(15),
         child: Text(
           text,
           style: Styles.tsWhiteRegular18,

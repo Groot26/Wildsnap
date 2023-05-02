@@ -21,9 +21,8 @@ class CustomPost extends StatelessWidget {
   final String description;
   final String lat;
   final String lng;
-
-  // final bool isLiked;
-  // final VoidCallback onLikeTap;
+   final bool isLiked ;
+   final VoidCallback onLikeTap;
   final String imageUrl;
   final String profilePic;
 
@@ -34,8 +33,8 @@ class CustomPost extends StatelessWidget {
     required this.description,
     required this.lat,
     required this.lng,
-    // required this.isLiked,
-    // required this.onLikeTap,
+     required this.isLiked,
+     required this.onLikeTap,
     required this.imageUrl,
     required this.profilePic,
   });
@@ -106,13 +105,14 @@ class CustomPost extends StatelessWidget {
                   CustomIcon(
                       icon: Images.icLocation,
                       onTap: () => _launchMap(lat, lng)),
-                  SizedBox(width: 20,)
-                  // CustomIcon(icon: Images.icDislike, onTap: () {}
-                  //     // icon: isLiked ? Images.icLike : Images.icDislike,
-                  //     // onTap: onLikeTap
-                  //     ),
-                  // CustomIcon(
-                  //     icon: Images.icComment, onTap: CommentsView.launch),
+                  //SizedBox(width: 20,),
+                  CustomIcon(
+                      //icon: Images.icDislike, onTap: () {}
+                       icon: isLiked ? Images.icLike : Images.icDislike,
+                       onTap: onLikeTap
+                      ),
+                  CustomIcon(
+                      icon: Images.icComment, onTap: CommentsView.launch),
                 ],
               ),
             ),

@@ -6,6 +6,12 @@ class Strings {
   static const getOTP = 'Get OTP';
   static const retry = 'Retry';
 
+  //VerifyOTP
+  static const enterOTP = 'Enter OTP';
+  static const sentTo = 'Sent to ';
+  static const submit = 'Submit';
+  static const resendOTP = 'Resend OTP';
+
   //OnBoarding
   static const next = 'Next';
   static const start = 'Start';
@@ -30,7 +36,8 @@ class Strings {
   static const password = 'Password';
   static const bio = 'Bio';
   static const login = 'Login';
-  static const signup = 'Don\'t have account? \n click to create new';
+  static const signup = 'Signup';
+  static const forgetPassword = '  Forget Password ?\n click to create new';
 
   //BasicDetails
   static const almostThere = 'Almost there !';

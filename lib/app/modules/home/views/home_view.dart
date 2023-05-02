@@ -38,13 +38,19 @@ class HomeView extends GetView<HomeController> {
                   itemBuilder: (context, index) {
                     final currentPost = controller.postsDash[index];
                     final currentUser = controller.postsDash[index].user!;
-                    return CustomPost(
-                      profilePic: currentUser.profilePic ,
-                      userName: currentUser.userName,
-                      description: currentPost.caption,
-                      imageUrl: currentPost.imageUrl,
-                      lat: currentPost.location.lat,
-                      lng: currentPost.location.lng,
+                    return Obx(
+                        ()=> CustomPost(
+                        onLikeTap: () {
+                          controller.isLiked.value = !controller.isLiked.value;
+                        },
+                        profilePic: currentUser.profilePic ,
+                        userName: currentUser.userName,
+                        description: currentPost.caption,
+                        imageUrl: currentPost.imageUrl,
+                        lat: currentPost.location.lat,
+                        lng: currentPost.location.lng,
+                        isLiked: controller.isLiked.value,
+                      ),
                     );
                   },
                 ),

@@ -106,6 +106,7 @@ class AuthSignupView extends GetView<AuthSignupController> {
                       wrapper: controller.passwordWrapper,
                       hintText: Strings.password,
                       inputType: TextInputType.visiblePassword,
+                      obscureText: true,
                     ),
                     SizedBox(height: 12),
                   ],

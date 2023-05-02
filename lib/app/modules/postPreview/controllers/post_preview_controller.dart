@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:wildsnap/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:wildsnap/utils/helper/text_field_wrapper.dart';
 import 'package:http/http.dart' as http;
 import 'package:wildsnap/utils/storage/storage_utils.dart';
@@ -66,14 +67,13 @@ class PostPreviewController extends GetxController {
 
       //http.FormData formData = http.FormData.fromMap(map);
 
-      // var request = http.MultipartRequest('POST', uri)
-      //   ..files.add(
-      //     await http.MultipartFile.fromPath(
-      //       'file',
-      //       imageFile.value!.path,
-      //       //contentType: MediaType('application', 'x-tar'),
-      //     ),
-      //   );
+      var request = http.MultipartRequest('POST', uri)
+        ..files.add(
+          await http.MultipartFile.fromPath(
+            'file',
+            imageFile.value!.path,
+          ),
+        );
       print(response.body.toString());
 
       if (response.statusCode == 200) {
@@ -81,6 +81,33 @@ class PostPreviewController extends GetxController {
       }
     } else {
       Get.snackbar('Error', 'No image selected');
+    }
+  }
+
+  Future completePost() async {
+    var url = Uri.parse('http://3.109.185.64:3001/api/post');
+    //json mapping user entered details
+    Map mapData = {
+      'imageUrl': 'link',
+      'caption': captionWrapper.controller.text,
+      'lat': latWrapper.controller.text,
+      'lng': longWrapper.controller.text
+    };
+
+    http.Response response = await http.post(url,
+        body: mapData,
+        headers: {'Authorisation': 'Bearer ${Storage.getToken()}'});
+
+    var data = jsonDecode(response.body);
+
+    print("Status: " + response.statusCode.toString());
+    print("DATA: $data");
+
+    if (response.statusCode == 201) {
+      Get.snackbar('Success', data['message']);
+      DashboardView.launch();
+    } else {
+      Get.snackbar('Something went Wrong', data['message']);
     }
   }
 }
@@ -120,6 +147,7 @@ class Location {
     data['lng'] = this.lng;
     return data;
   }
+
   Location.fromJson(Map<String, dynamic> json) {
     lat = json['lat'];
     lng = json['lng'];
